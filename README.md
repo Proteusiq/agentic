@@ -62,14 +62,25 @@ Agents read these files. They *get it*. First try.
 
 ## Quick Start
 
-**30 seconds to better AI:**
+### Install
 
 ```bash
-# Clone
-git clone https://github.com/Proteusiq/agentic.git && cd agentic
+# With cargo
+cargo install --git https://github.com/Proteusiq/agentic scaffold
 
+# Or download binary (macOS ARM)
+curl -L https://github.com/Proteusiq/agentic/releases/latest/download/scaffold-aarch64-apple-darwin -o scaffold
+chmod +x scaffold && mv scaffold /usr/local/bin/
+```
+
+### Use
+
+```bash
 # Scaffold into your project
-./scaffold -d ~/code/my-project
+scaffold -d ~/code/my-project
+
+# Use --link to symlink AGENTS.md (recommended)
+scaffold -d ~/code/my-project --link
 
 # Done. Your agent now knows your conventions.
 ```
@@ -206,10 +217,13 @@ These aren't suggestions. They're convictions.
 
 ## Scaffold CLI
 
-```bash
-./scaffold [OPTIONS] [PROJECT_NAME]
+Single binary. Templates embedded. No dependencies.
 
-  -d, --dir DIR      Target directory
+```bash
+scaffold [OPTIONS] [PROJECT_NAME]
+
+  -d, --dir <DIR>    Target directory (default: current)
+  -o, --org <ORG>    GitHub org (default: auto-detect)
   -l, --link         Symlink AGENTS.md (recommended)
   -s, --skill-only   Only create SKILL.md
   -a, --agents-only  Only create AGENTS.md
