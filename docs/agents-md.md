@@ -27,6 +27,7 @@ A good AGENTS.md has these sections:
 | **Persona** | Set the mental model ("You are an expert...") |
 | **Philosophy** | Core principles (3-4 bullets max) |
 | **Do NOT** | Explicit anti-patterns |
+| **NEVER** | Destructive actions requiring confirmation |
 | **Quick Reference** | Scannable command table |
 | **Language Sections** | Per-language tools and style |
 | **Git** | Commit format, PR rules |
@@ -90,6 +91,52 @@ AI agents default to popular patterns. If you want something different, you have
 | "Do NOT use requests" | Agent avoids requests completely |
 
 Negative instructions are stronger than positive suggestions.
+
+---
+
+## The NEVER Section (Security Guardrails)
+
+Beyond coding style, you need to prevent AI from taking **destructive actions**. This is critical for production safety.
+
+```markdown
+## NEVER (Destructive Actions)
+
+These actions require **explicit user confirmation**. Stop and ask before proceeding.
+
+### Data & Infrastructure
+- NEVER run `DROP`, `DELETE`, `TRUNCATE` on production databases
+- NEVER run migrations on production without explicit approval
+- NEVER delete cloud resources (VMs, databases, storage buckets)
+- NEVER run `terraform destroy`, `pulumi destroy`, or equivalent
+
+### Secrets & Security
+- NEVER commit secrets, API keys, tokens, or credentials to git
+- NEVER log, print, or expose secrets — even in debug mode
+- NEVER disable SSL/TLS verification (`verify=False`, `--insecure`)
+
+### Git & Deployment
+- NEVER force push to `main` or `master`
+- NEVER deploy to production without explicit approval
+- NEVER skip CI checks (`--no-verify`)
+
+### If in Doubt
+1. **Stop** — do not execute
+2. **Explain** — describe what you were about to do
+3. **Ask** — get explicit user confirmation
+```
+
+This section is **more important than coding style**. An AI that uses `requests` instead of `httpx` is annoying. An AI that drops your production database is catastrophic.
+
+**Key patterns:**
+
+| Category | Examples |
+|----------|----------|
+| Data destruction | `DROP TABLE`, `DELETE FROM`, `rm -rf` |
+| Secret exposure | Committing `.env`, logging API keys |
+| Production changes | Deploys, migrations, infrastructure |
+| Irreversible git | Force push, history rewrite |
+
+The "Stop → Explain → Ask" pattern gives you a chance to intervene.
 
 ---
 
