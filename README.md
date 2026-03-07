@@ -65,12 +65,13 @@ Agents read these files. They *get it*. First try.
 ### Install
 
 ```bash
-# With cargo
-cargo install --git https://github.com/Proteusiq/agentic scaffold
+# Clone and build
+git clone https://github.com/Proteusiq/agentic.git
+cd agentic/scaffold
+cargo build --release
 
-# Or download binary (macOS ARM)
-curl -L https://github.com/Proteusiq/agentic/releases/latest/download/scaffold-aarch64-apple-darwin -o scaffold
-chmod +x scaffold && mv scaffold /usr/local/bin/
+# Install to PATH
+cp target/release/scaffold /usr/local/bin/
 ```
 
 ### Use
@@ -83,6 +84,19 @@ scaffold -d ~/code/my-project
 scaffold -d ~/code/my-project --link
 
 # Done. Your agent now knows your conventions.
+```
+
+### Options
+
+```
+scaffold [OPTIONS] [PROJECT_NAME]
+
+  -d, --dir <DIR>    Target directory (default: current)
+  -o, --org <ORG>    GitHub org (default: auto-detect from git)
+  -l, --link         Symlink AGENTS.md instead of copying
+  -s, --skill-only   Only create SKILL.md
+  -a, --agents-only  Only create AGENTS.md
+  -h, --help         Show help
 ```
 
 Or grab files directly:
@@ -212,24 +226,6 @@ These aren't suggestions. They're convictions.
 > **Functional over OOP.** Pure functions. Composition. Immutability.
 
 > **Verify before commit.** If it's not tested, it's not done.
-
----
-
-## Scaffold CLI
-
-Single binary. Templates embedded. No dependencies.
-
-```bash
-scaffold [OPTIONS] [PROJECT_NAME]
-
-  -d, --dir <DIR>    Target directory (default: current)
-  -o, --org <ORG>    GitHub org (default: auto-detect)
-  -l, --link         Symlink AGENTS.md (recommended)
-  -s, --skill-only   Only create SKILL.md
-  -a, --agents-only  Only create AGENTS.md
-```
-
-**Pro tip:** Always use `--link`. One source of truth.
 
 ---
 
