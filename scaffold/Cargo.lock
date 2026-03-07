@@ -217,6 +217,7 @@ dependencies = [
  "anyhow",
  "clap",
  "dirs",
+ "libc",
 ]
 
 [[package]]

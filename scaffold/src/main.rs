@@ -98,6 +98,35 @@ fn to_upper_snake(s: &str) -> String {
     s.to_uppercase().replace('-', "_")
 }
 
+fn sanitize_name(name: &str) -> Result<String> {
+    // Reject path traversal attempts and shell metacharacters
+    if name.contains("..")
+        || name.contains('/')
+        || name.contains('\\')
+        || name.contains('\0')
+        || name.contains('`')
+        || name.contains('$')
+        || name.contains(';')
+        || name.contains('|')
+        || name.contains('&')
+        || name.contains('\n')
+        || name.contains('\r')
+    {
+        anyhow::bail!("Invalid project name: contains forbidden characters");
+    }
+
+    // Ensure name is not empty and reasonable length
+    let name = name.trim();
+    if name.is_empty() {
+        anyhow::bail!("Project name cannot be empty");
+    }
+    if name.len() > 64 {
+        anyhow::bail!("Project name too long (max 64 characters)");
+    }
+
+    Ok(name.to_string())
+}
+
 fn create_agents(target_dir: &Path, link_mode: bool) -> Result<()> {
     let agents_file = target_dir.join("AGENTS.md");
 
@@ -109,9 +138,22 @@ fn create_agents(target_dir: &Path, link_mode: bool) -> Result<()> {
     if link_mode {
         // For link mode, we write to a cache location and symlink
         let cache_dir = dirs::cache_dir()
-            .unwrap_or_else(|| PathBuf::from("/tmp"))
+            .context("Cannot determine cache directory (set XDG_CACHE_HOME or HOME)")?
             .join("agentic");
         fs::create_dir_all(&cache_dir)?;
+
+        // Ensure we own the cache directory (prevent symlink attacks in shared dirs)
+        let metadata = fs::metadata(&cache_dir)?;
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::MetadataExt;
+            if metadata.uid() != unsafe { libc::getuid() } {
+                anyhow::bail!(
+                    "Cache directory {:?} is not owned by current user",
+                    cache_dir
+                );
+            }
+        }
 
         let cached_agents = cache_dir.join("AGENTS.md");
         fs::write(&cached_agents, AGENTS_TEMPLATE)?;
@@ -206,9 +248,15 @@ fn main() -> Result<()> {
         .canonicalize()
         .with_context(|| format!("Cannot access directory: {:?}", args.dir))?;
 
-    let repo = detect_repo(&target_dir);
-    let project_name = args.project_name.unwrap_or_else(|| repo.clone());
-    let org = args.org.unwrap_or_else(|| detect_org(&target_dir));
+    let repo = sanitize_name(&detect_repo(&target_dir))?;
+    let project_name = match args.project_name {
+        Some(name) => sanitize_name(&name)?,
+        None => repo.clone(),
+    };
+    let org = match args.org {
+        Some(o) => sanitize_name(&o)?,
+        None => sanitize_name(&detect_org(&target_dir))?,
+    };
 
     println!("Scaffolding agent docs for: {org}/{repo} (project: {project_name})");
     println!();
@@ -264,5 +312,43 @@ mod tests {
     fn test_to_upper_snake() {
         assert_eq!(to_upper_snake("my-project"), "MY_PROJECT");
         assert_eq!(to_upper_snake("myproject"), "MYPROJECT");
+    }
+
+    #[test]
+    fn test_sanitize_name_valid() {
+        assert!(sanitize_name("my-project").is_ok());
+        assert!(sanitize_name("myproject123").is_ok());
+        assert!(sanitize_name("a").is_ok());
+    }
+
+    #[test]
+    fn test_sanitize_name_path_traversal() {
+        assert!(sanitize_name("../etc/passwd").is_err());
+        assert!(sanitize_name("foo/../bar").is_err());
+        assert!(sanitize_name("foo/bar").is_err());
+        assert!(sanitize_name("foo\\bar").is_err());
+    }
+
+    #[test]
+    fn test_sanitize_name_shell_injection() {
+        assert!(sanitize_name("foo;rm -rf /").is_err());
+        assert!(sanitize_name("foo`id`").is_err());
+        assert!(sanitize_name("foo$(whoami)").is_err());
+        assert!(sanitize_name("foo|cat /etc/passwd").is_err());
+        assert!(sanitize_name("foo&& echo pwned").is_err());
+    }
+
+    #[test]
+    fn test_sanitize_name_empty_and_long() {
+        assert!(sanitize_name("").is_err());
+        assert!(sanitize_name("   ").is_err());
+        assert!(sanitize_name(&"a".repeat(65)).is_err());
+        assert!(sanitize_name(&"a".repeat(64)).is_ok());
+    }
+
+    #[test]
+    fn test_sanitize_name_newlines() {
+        assert!(sanitize_name("foo\nbar").is_err());
+        assert!(sanitize_name("foo\rbar").is_err());
     }
 }
