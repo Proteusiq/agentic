@@ -1,4 +1,4 @@
-# Agentic Culture
+# Agentic
 
 A reference library of agent instructions, skills, and conventions for AI-assisted development.
 
@@ -17,8 +17,8 @@ This repository provides standardized templates and tooling for creating agent d
 
 ```bash
 # Clone this repo (or add to PATH)
-git clone https://github.com/Norlys-A-S/dsai-agentic-culture.git
-cd dsai-agentic-culture
+git clone https://github.com/Proteusiq/agentic.git
+cd agentic
 
 # Scaffold docs in another project
 ./scaffold -d /path/to/your/project
@@ -40,7 +40,6 @@ cd dsai-agentic-culture
 | `AGENTS.md` | Master development conventions (Python, Rust, TypeScript, Bash, Git) |
 | `SKILL.template.md` | Template for project-specific knowledge (replace placeholders) |
 | `scaffold` | CLI tool to initialize agent docs in a project |
-| `examples/` | Real-world SKILL.md examples from production projects |
 
 ## The Two-File System
 
@@ -140,14 +139,6 @@ From the master `AGENTS.md`:
 - **Self-documenting code** — if it needs comments, refactor it
 - **Functional over OOP** — pure functions, composition, immutability
 - **Commit early, commit often** — small, focused, verified commits
-
-## Examples
-
-See the `examples/` directory for real-world SKILL.md files:
-
-- `trustpilot-ai/` — MCP server for Trustpilot review responses
-- `ufarm/` — Farm management platform with DuckDB
-- `dotfiles/` — Personal dotfiles with GNU Stow
 
 ## Contributing
 
