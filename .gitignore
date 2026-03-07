@@ -1,5 +1,19 @@
+# Build artifacts
 site/
+target/
+
+# Python
 .venv/
 __pycache__/
 *.pyc
 uv.lock
+
+# Secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+*_secret*
+*_token*
