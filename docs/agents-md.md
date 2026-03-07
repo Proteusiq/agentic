@@ -96,7 +96,7 @@ Negative instructions are stronger than positive suggestions.
 
 ## The NEVER Section (Security Guardrails)
 
-Beyond coding style, you need to prevent AI from taking **destructive actions**. This is critical for production safety.
+Beyond coding style, you need guardrails against **destructive actions**. This is critical for production safety.
 
 ```markdown
 ## NEVER (Destructive Actions)
@@ -125,7 +125,7 @@ These actions require **explicit user confirmation**. Stop and ask before procee
 3. **Ask** — get explicit user confirmation
 ```
 
-This section is **more important than coding style**. An AI that uses `requests` instead of `httpx` is annoying. An AI that drops your production database is catastrophic.
+This section is **more important than coding style**. Using `requests` instead of `httpx` is annoying. Dropping your production database is catastrophic.
 
 **Key patterns:**
 
