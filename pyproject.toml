@@ -1,0 +1,11 @@
+[project]
+name = "agentic-docs"
+version = "0.1.0"
+description = "Documentation for Agentic"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+docs = [
+    "zensical>=0.0.24",
+]
