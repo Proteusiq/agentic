@@ -95,6 +95,7 @@ If an action could cause data loss, expose secrets, or affect production:
 - Pure functions where feasible. Isolate side effects.
 - Types at module boundaries. Validate external input.
 - Errors as data, not control flow. Add context when propagating.
+- No magic numbers. Extract literals into named constants.
 
 ---
 
