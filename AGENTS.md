@@ -6,6 +6,34 @@ You are an expert software engineer. You write clean, maintainable code. You thi
 
 ---
 
+## Architecture Overview
+
+> **Fill this in per-project.** Describe how the system works in 2-3 sentences.
+>
+> Example: "Requests hit the API layer, which validates input and dispatches to service modules. Services contain business logic and call repositories for persistence. Background jobs run via the task queue."
+
+---
+
+## Project Structure
+
+> **Fill this in per-project.** Map directories to their responsibilities.
+>
+> ```
+> src/<package>/
+> ├── cli/        # CLI commands, argument parsing
+> ├── crud/       # Data access, database operations
+> ├── <domain>/   # Core domain logic (name it contextually)
+> ├── __init__.py # Public API exports
+> ├── client.py   # External service clients
+> ├── settings.py # Configuration, environment variables
+> └── types.py    # Domain types, Pydantic models
+> tests/          # Mirrors src/<package>/ structure
+> scripts/        # CI, deployment, one-off automation
+> docs/           # mkdocs documentation
+> ```
+
+---
+
 ## Philosophy
 
 - **Simplicity is king** — the simplest solution that works is the best solution
@@ -96,6 +124,22 @@ If an action could cause data loss, expose secrets, or affect production:
 - Types at module boundaries. Validate external input.
 - Errors as data, not control flow. Add context when propagating.
 - No magic numbers. Extract literals into named constants.
+
+---
+
+## Logging
+
+- Use `logging.getLogger(__name__)` — one logger per module.
+- Log at appropriate levels:
+  - `DEBUG` — detailed diagnostic info (disabled in production)
+  - `INFO` — confirmation that things are working as expected
+  - `WARNING` — something unexpected, but the system continues
+  - `ERROR` — a failure that prevented an operation from completing
+- Log liberally in:
+  - Long functions with multiple steps
+  - `try`/`except` blocks that catch broad exceptions
+  - External service calls (before and after)
+- Never log secrets, tokens, passwords, or PII.
 
 ---
 
@@ -242,6 +286,12 @@ type: short description
 
 **PR rule:** One logical change per PR. Explain the *why*.
 
+**PR descriptions should include:**
+- Summary of intent (what and why)
+- Verification commands run locally
+- Dependency changes (if any)
+- Breaking changes or migration notes
+
 ---
 
 ## Testing
@@ -250,6 +300,24 @@ type: short description
 - **Integration tests** for I/O boundaries
 - **AAA pattern**: Arrange, Act, Assert
 - Assert behavior, not implementation
+
+**Organization:**
+- Mirror `src/` structure under `tests/` — match filenames for traceability
+- Use pytest markers for optional test suites (e.g., `@pytest.mark.slow`, `@pytest.mark.integration`)
+- Skip expensive tests locally with `-m "not slow"`, run full suite in CI
+- Parametrize test cases where inputs vary but logic is the same
+- Favor real implementations over mocks; mock only at true boundaries
+
+---
+
+## Common Issues
+
+> **Fill this in per-project.** Document known gotchas and their fixes.
+>
+> Example:
+> - **`uv run` permission denied under `~/.cache`** — Override cache locations: `UV_CACHE="$(pwd)/.cache_uv" XDG_CACHE_HOME="$(pwd)/.cache_xdg" uv run <command>`
+> - **Import errors after pulling** — Run `uv sync` to install new dependencies
+> - **Type errors in CI but not locally** — Ensure you're running the same Python version as CI
 
 ---
 
