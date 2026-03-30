@@ -5,7 +5,7 @@ description = "Two files. Infinite context. Zero repetition."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
-authors = [{ name = "Prayson Wilfred Daniel", email = "praysonwilfred@gmail.com" }]
+authors = [{ name = "Prayson Wilfred Daniel", email = "14926709+Proteusiq@users.noreply.github.com" }]
 keywords = ["ai", "agents", "llm", "conventions", "documentation"]
 classifiers = [
     "Development Status :: 4 - Beta",
