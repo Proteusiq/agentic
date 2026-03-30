@@ -9,10 +9,17 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Proteusiq/agentic/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://github.com/Proteusiq/agentic/actions/workflows/ci.yml"><img src="https://github.com/Proteusiq/agentic/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://proteusiq.github.io/agentic"><img src="https://img.shields.io/badge/docs-online-brightgreen.svg" alt="Docs"></a>
+</p>
+
+<p align="center">
   <a href="#the-problem">Problem</a> •
   <a href="#the-fix">Fix</a> •
   <a href="#quick-start">Quick Start</a> •
-  <a href="#how-it-works">How It Works</a>
+  <a href="#how-it-works">How It Works</a> •
+  <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 ---
@@ -226,6 +233,8 @@ These aren't suggestions. They're convictions.
 > **Functional over OOP.** Pure functions. Composition. Immutability.
 
 > **Verify before commit.** If it's not tested, it's not done.
+
+> **Plan mode over borrowed skills.** Research it yourself. Borrowed skills pollute context with stale assumptions.
 
 ---
 

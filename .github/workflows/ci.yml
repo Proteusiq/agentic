@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scaffold/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scaffold/**'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-action@stable
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            scaffold/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('scaffold/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Check formatting
+        working-directory: scaffold
+        run: cargo fmt --check
+
+      - name: Lint
+        working-directory: scaffold
+        run: cargo clippy -- -D warnings
+
+      - name: Build
+        working-directory: scaffold
+        run: cargo build --release
+
+      - name: Test
+        working-directory: scaffold
+        run: cargo test
