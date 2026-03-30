@@ -15,10 +15,10 @@
 </p>
 
 <p align="center">
-  <a href="#the-problem">Problem</a> •
-  <a href="#the-fix">Fix</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#how-it-works">How It Works</a> •
+  <a href="#-the-problem">Problem</a> •
+  <a href="#-the-fix">Fix</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-how-it-works">How It Works</a> •
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
@@ -26,10 +26,10 @@
 
 ## The Problem
 
-You open your AI editor. You paste your code. You wait.
+We've all been here. You open your AI editor, paste some code, and wait...
 
 ```
-AI:  Here's the solution using `requests`...
+AI:  Here's the solution using requests...
 You: We use httpx.
 AI:  Here's the updated solution with classes...
 You: We prefer functions.
@@ -38,14 +38,16 @@ You: We use ruff, not black.
 AI:  *rewrites everything again*
 ```
 
-**You've done this dance before.** Every session. Every project. Every time.
+Sound familiar? Every session. Every project. Every time.
 
-AI agents are powerful. But they're flying blind:
+AI agents are incredibly powerful, but they start each conversation knowing nothing about:
 
-- They don't know you prefer `X | None` over `Optional[X]`
-- They don't know your API has a layered architecture
-- They don't know that `users.py` has a quirk that breaks everything
-- They don't know *anything* until you tell them. Again.
+- Your preference for `X | None` over `Optional[X]`
+- Your API's layered architecture
+- That quirky `users.py` file that breaks everything if you touch it wrong
+- *Anything* about how you actually work
+
+Until you tell them. Again. And again.
 
 ---
 
@@ -57,43 +59,44 @@ your-project/
 └── SKILL.md      # What this project is
 ```
 
-That's it. Two markdown files.
+That's it. Two markdown files. No fancy tooling required.
 
-**AGENTS.md** = Your development conventions. Symlink it across all your projects.
+| File | Purpose | Sharing |
+|------|---------|---------|
+| **AGENTS.md** | Your development conventions | Symlink across all projects |
+| **SKILL.md** | This repo's domain knowledge | Unique per project |
 
-**SKILL.md** = This repo's domain knowledge. Lives in each project root.
-
-Agents read these files. They *get it*. First try.
+Drop them in your project root. Agents read them. They *get it*. First try.
 
 ---
 
 ## Quick Start
 
-### Install
+### Option 1: Just grab the files
 
 ```bash
-# Clone and build
+curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
+curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/SKILL.template.md
+mv SKILL.template.md SKILL.md
+# Edit SKILL.md with your project details
+```
+
+### Option 2: Use the scaffold CLI
+
+```bash
+# Install
 git clone https://github.com/Proteusiq/agentic.git
-cd agentic/scaffold
-cargo build --release
-
-# Install to PATH
+cd agentic/scaffold && cargo build --release
 cp target/release/scaffold /usr/local/bin/
-```
 
-### Use
-
-```bash
-# Scaffold into your project
-scaffold -d ~/code/my-project
-
-# Use --link to symlink AGENTS.md (recommended)
+# Use
 scaffold -d ~/code/my-project --link
-
-# Done. Your agent now knows your conventions.
 ```
 
-### Options
+The `--link` flag symlinks `AGENTS.md` so all your projects share the same conventions. Change once, update everywhere.
+
+<details>
+<summary>CLI Options</summary>
 
 ```
 scaffold [OPTIONS] [PROJECT_NAME]
@@ -105,22 +108,15 @@ scaffold [OPTIONS] [PROJECT_NAME]
   -a, --agents-only  Only create AGENTS.md
   -h, --help         Show help
 ```
-
-Or grab files directly:
-
-```bash
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/SKILL.template.md
-mv SKILL.template.md SKILL.md
-```
+</details>
 
 ---
 
 ## How It Works
 
-### AGENTS.md — Your Rules
+### AGENTS.md — Your coding style, everywhere
 
-Universal conventions that apply everywhere you code:
+This is *you* as a developer. Your preferences, your tools, your non-negotiables:
 
 ```markdown
 ## Do NOT
@@ -128,35 +124,31 @@ Universal conventions that apply everywhere you code:
 - Do NOT use `any` in TypeScript. Ever.
 - Do NOT use `requests`. Use `httpx`.
 - Do NOT use `black` or `mypy`. Use `ruff` and `ty`.
-- Do NOT commit without running the verification loop.
 
 ## Python — Before Commit
 
-uv run ruff format . && uv run ruff check --fix . && uv run ty check . && uv run pytest
+uv run ruff format . && uv run ruff check --fix . && uv run ty check .
 ```
 
-One file. All projects. Symlink it:
+Symlink it across projects:
 
 ```bash
 ln -sfn ~/agentic/AGENTS.md ~/code/project-a/AGENTS.md
 ln -sfn ~/agentic/AGENTS.md ~/code/project-b/AGENTS.md
-ln -sfn ~/agentic/AGENTS.md ~/code/project-c/AGENTS.md
 ```
 
-Change once. Update everywhere.
+One source of truth. All your projects. Always in sync.
 
-### SKILL.md — Project DNA
+### SKILL.md — This project's DNA
 
-What makes *this* repository tick:
+What makes *this* repository tick. The stuff that isn't obvious from reading the code:
 
-```yaml
+```markdown
 ---
 name: payment-api
 description: Stripe integration for subscription billing
 ---
-```
 
-```markdown
 ## Architecture
 
 settings.py → services/ → db/ → api/
@@ -173,58 +165,52 @@ settings.py → services/ → db/ → api/
 - Tests require `STRIPE_TEST_KEY` in env
 ```
 
-Agents read this. They understand. They don't ask stupid questions.
+Agents read this and understand context immediately. No more explaining the same things over and over.
 
 ---
 
 ## Works With
 
-Skills follow the [Agent Skills](https://agentskills.io) open standard.
-
-| Agent | How to Enable |
-|-------|---------------|
-| **Claude Code** | Reads `SKILL.md` automatically, or symlink to `~/.claude/skills/` |
+| Agent | Setup |
+|-------|-------|
+| **Claude Code** | Reads `AGENTS.md` and `SKILL.md` from project root automatically |
 | **OpenCode** | Symlink to `~/.config/opencode/skills/` |
-| **Cursor** | Reads `.cursorrules` (rename or copy) |
-| **Any LLM** | Paste the file contents, or use as system prompt |
+| **Cursor** | Rename to `.cursorrules` or reference in settings |
+| **Any LLM** | Paste contents or use as system prompt |
 
-Make skills global:
+Want global skills? Make them available everywhere:
 
 ```bash
-# Now your agent knows about my-api even when you're in another project
 mkdir -p ~/.config/opencode/skills/my-api
 ln -sfn ~/code/my-api/SKILL.md ~/.config/opencode/skills/my-api/SKILL.md
 ```
 
 ---
 
-## What's In The Box
+## What's Inside
 
-### AGENTS.md
+### AGENTS.md includes
 
-| Section | What's There |
+| Section | What you get |
 |---------|--------------|
-| **Do NOT** | Explicit anti-patterns. No ambiguity. |
-| **Before You Code** | Plan → Search → Visualize → Then code |
-| **Python** | `uv` + `ruff` + `ty` + `pytest` |
-| **Rust** | `cargo` + `bacon` + `clippy` |
-| **TypeScript** | `bun`/`deno` + `biome` + `zod` |
-| **Git** | Conventional commits. One change per PR. |
+| **Do NOT** | Explicit anti-patterns — no ambiguity |
+| **NEVER** | Destructive action guardrails |
+| **Before You Code** | Plan → Search → Visualize → Code |
+| **Language guides** | Python, Rust, TypeScript, Bash |
+| **Git conventions** | Commits, branches, PRs |
 
-### SKILL.template.md
+### SKILL.template.md includes
 
 | Section | Purpose |
 |---------|---------|
-| **Frontmatter** | Name + description for agent discovery |
-| **Architecture** | How the pieces connect |
-| **Domain Rules** | Business logic that isn't obvious from code |
-| **The Weird Parts** | Where the dragons live |
+| **Frontmatter** | Name + description for discovery |
+| **Architecture** | How pieces connect |
+| **Domain Rules** | Business logic that isn't in the code |
+| **The Weird Parts** | Here be dragons |
 
 ---
 
-## The Philosophy
-
-These aren't suggestions. They're convictions.
+## Philosophy
 
 > **Simplicity is king.** The simplest solution that works is the best solution.
 
@@ -238,34 +224,18 @@ These aren't suggestions. They're convictions.
 
 ---
 
-## Why Two Files?
-
-| File | What | Shared? |
-|------|------|---------|
-| `AGENTS.md` | How you code | Yes — same everywhere |
-| `SKILL.md` | What this is | No — unique per repo |
-
-Update conventions once → every project gets them.
-Keep domain knowledge focused → agents load fast.
-
----
-
 ## Contributing
+
+We'd love your help making this better. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 git clone https://github.com/Proteusiq/agentic.git
 cd agentic
-
-# Follow AGENTS.md (obviously)
-# Submit a PR
+# Read AGENTS.md (obviously), then submit a PR
 ```
 
 ---
 
 <p align="center">
-  <sub>MIT License</sub>
-</p>
-
-<p align="center">
-  <sub>Built for developers who believe AI should adapt to their workflow, not the other way around.</sub>
+  <sub>MIT License — Built for developers who believe AI should adapt to them, not the other way around.</sub>
 </p>
