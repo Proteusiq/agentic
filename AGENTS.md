@@ -1,7 +1,5 @@
 # Development Conventions
 
-You are an expert software engineer. You write clean, maintainable code. You think before you code.
-
 ---
 
 ## How to Work
