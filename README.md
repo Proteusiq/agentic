@@ -1,241 +1,67 @@
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&random=false&width=500&lines=Stop+teaching+AI+your+codebase;Every.+Single.+Time." alt="Typing SVG" />
-</p>
+# Stop the Markdown Hell
 
-<h1 align="center">Agentic</h1>
+You don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
 
-<p align="center">
-  <strong>Two files. Infinite context. Zero repetition.</strong>
-</p>
+**You need one file: AGENTS.md** — and it should be minimal.
 
-<p align="center">
-  <a href="https://github.com/Proteusiq/agentic/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <a href="https://github.com/Proteusiq/agentic/actions/workflows/ci.yml"><img src="https://github.com/Proteusiq/agentic/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://proteusiq.github.io/agentic"><img src="https://img.shields.io/badge/docs-online-brightgreen.svg" alt="Docs"></a>
-</p>
-
-<p align="center">
-  <a href="#-the-problem">Problem</a> •
-  <a href="#-the-fix">Fix</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-how-it-works">How It Works</a> •
-  <a href="CONTRIBUTING.md">Contributing</a>
-</p>
+**Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
 ---
 
-## The Problem
+## The Problems
 
-We've all been here. You open your AI editor, paste some code, and wait...
+### 1. Security
 
-```
-AI:  Here's the solution using requests...
-You: We use httpx.
-AI:  Here's the updated solution with classes...
-You: We prefer functions.
-AI:  Here's the refactored version...
-You: We use ruff, not black.
-AI:  *rewrites everything again*
-```
+Skills are attack vectors. 12% of ClawHub's registry was [compromised with malware](https://snyk.io/articles/skill-md-shell-access/).
 
-Sound familiar? Every session. Every project. Every time.
+### 2. Context Rot
 
-AI agents are incredibly powerful, but they start each conversation knowing nothing about:
+Pre-loaded context becomes stale. Models already know Python style and TypeScript rules. Your 300-line file conflicts with reality.
 
-- Your preference for `X | None` over `Optional[X]`
-- Your API's layered architecture
-- That quirky `users.py` file that breaks everything if you touch it wrong
-- *Anything* about how you actually work
+### 3. Complexity for No Gain
 
-Until you tell them. Again. And again.
+Context files [reduce task success rates and increase cost by 20%](https://arxiv.org/abs/2602.11988). More context = worse results.
 
 ---
 
-## The Fix
+## The Fix: RTFM
 
-```
-your-project/
-├── AGENTS.md     # How you write code
-└── SKILL.md      # What this project is
-```
-
-That's it. Two markdown files. No fancy tooling required.
-
-| File | Purpose | Sharing |
-|------|---------|---------|
-| **AGENTS.md** | Your development conventions | Symlink across all projects |
-| **SKILL.md** | This repo's domain knowledge | Unique per project |
-
-Drop them in your project root. Agents read them. They *get it*. First try.
-
----
-
-## Quick Start
-
-### Option 1: Just grab the files
-
-```bash
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/SKILL.template.md
-mv SKILL.template.md SKILL.md
-# Edit SKILL.md with your project details
-```
-
-### Option 2: Use the scaffold CLI
-
-```bash
-# Install
-git clone https://github.com/Proteusiq/agentic.git
-cd agentic/scaffold && cargo build --release
-cp target/release/scaffold /usr/local/bin/
-
-# Use
-scaffold -d ~/code/my-project --link
-```
-
-The `--link` flag symlinks `AGENTS.md` so all your projects share the same conventions. Change once, update everywhere.
-
-<details>
-<summary>CLI Options</summary>
-
-```
-scaffold [OPTIONS] [PROJECT_NAME]
-
-  -d, --dir <DIR>    Target directory (default: current)
-  -o, --org <ORG>    GitHub org (default: auto-detect from git)
-  -l, --link         Symlink AGENTS.md instead of copying
-  -s, --skill-only   Only create SKILL.md
-  -a, --agents-only  Only create AGENTS.md
-  -h, --help         Show help
-```
-</details>
-
----
-
-## How It Works
-
-### AGENTS.md — Your coding style, everywhere
-
-This is *you* as a developer. Your preferences, your tools, your non-negotiables:
+Read The Fucking Manual. In real-time.
 
 ```markdown
-## Do NOT
+# Development Conventions
 
-- Do NOT use `any` in TypeScript. Ever.
-- Do NOT use `requests`. Use `httpx`.
-- Do NOT use `black` or `mypy`. Use `ruff` and `ty`.
+You are an expert software engineer. You write clean, maintainable code. You think before you code.
 
-## Python — Before Commit
+---
 
-uv run ruff format . && uv run ruff check --fix . && uv run ty check .
+## How to Work
+
+1. **Research first** — read official docs, explore the codebase, understand before changing
+2. **Document findings** — update `learnings.md` with what you discover (gotchas, working commands, patterns)
+3. **Track future work** — push non-blocking items to `todo.md`
+
+That's it. No external skills, no pre-loaded context. Research in real-time, document as you go.
+
+---
+
+## NEVER (Destructive Actions)
+
+These actions require **explicit user confirmation**. Stop and ask before proceeding.
+
+- NEVER run destructive database commands (`DROP`, `DELETE`, `TRUNCATE`) on production
+- NEVER commit secrets, API keys, tokens, or credentials to git
+- NEVER force push to `main` or `master`
+- NEVER run `rm -rf` on directories you didn't create in this session
+- NEVER deploy to production without explicit approval
+
+If an action could cause data loss, expose secrets, or affect production: **stop, explain, ask**.
 ```
 
-Symlink it across projects:
-
-```bash
-ln -sfn ~/agentic/AGENTS.md ~/code/project-a/AGENTS.md
-ln -sfn ~/agentic/AGENTS.md ~/code/project-b/AGENTS.md
-```
-
-One source of truth. All your projects. Always in sync.
-
-### SKILL.md — This project's DNA
-
-What makes *this* repository tick. The stuff that isn't obvious from reading the code:
-
-```markdown
----
-name: payment-api
-description: Stripe integration for subscription billing
----
-
-## Architecture
-
-settings.py → services/ → db/ → api/
-
-## Domain Rules
-
-- Prices stored in cents, displayed in dollars
-- Never delete subscriptions, cancel them
-- Webhook signatures must be verified
-
-## The Weird Parts
-
-- `legacy_pricing.py` uses the old Stripe API. Don't touch it.
-- Tests require `STRIPE_TEST_KEY` in env
-```
-
-Agents read this and understand context immediately. No more explaining the same things over and over.
+Copy [AGENTS.md](./AGENTS.md) to your project. Done.
 
 ---
 
-## Works With
+## License
 
-| Agent | Setup |
-|-------|-------|
-| **Claude Code** | Reads `AGENTS.md` and `SKILL.md` from project root automatically |
-| **OpenCode** | Symlink to `~/.config/opencode/skills/` |
-| **Cursor** | Rename to `.cursorrules` or reference in settings |
-| **Any LLM** | Paste contents or use as system prompt |
-
-Want global skills? Make them available everywhere:
-
-```bash
-mkdir -p ~/.config/opencode/skills/my-api
-ln -sfn ~/code/my-api/SKILL.md ~/.config/opencode/skills/my-api/SKILL.md
-```
-
----
-
-## What's Inside
-
-### AGENTS.md includes
-
-| Section | What you get |
-|---------|--------------|
-| **Do NOT** | Explicit anti-patterns — no ambiguity |
-| **NEVER** | Destructive action guardrails |
-| **Before You Code** | Plan → Search → Visualize → Code |
-| **Language guides** | Python, Rust, TypeScript, Bash |
-| **Git conventions** | Commits, branches, PRs |
-
-### SKILL.template.md includes
-
-| Section | Purpose |
-|---------|---------|
-| **Frontmatter** | Name + description for discovery |
-| **Architecture** | How pieces connect |
-| **Domain Rules** | Business logic that isn't in the code |
-| **The Weird Parts** | Here be dragons |
-
----
-
-## Philosophy
-
-> **Simplicity is king.** The simplest solution that works is the best solution.
-
-> **Self-documenting code.** If it needs comments, refactor it.
-
-> **Functional over OOP.** Pure functions. Composition. Immutability.
-
-> **Verify before commit.** If it's not tested, it's not done.
-
-> **Plan mode over borrowed skills.** Research it yourself. Borrowed skills pollute context with stale assumptions.
-
----
-
-## Contributing
-
-We'd love your help making this better. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-```bash
-git clone https://github.com/Proteusiq/agentic.git
-cd agentic
-# Read AGENTS.md (obviously), then submit a PR
-```
-
----
-
-<p align="center">
-  <sub>MIT License — Built for developers who believe AI should adapt to them, not the other way around.</sub>
-</p>
+MIT

@@ -1,131 +1,135 @@
-## Two files. Infinite context. Zero repetition.
+# Stop the Markdown Hell
+
+You don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
+
+**You need one file: AGENTS.md** (or CONTRIBUTING.md).
+
+And it should be minimal.
 
 ---
 
-## The Problem
+## Issue 1: Security
 
-You open your AI editor. You paste your code. You wait.
+Skills and context files are attack vectors.
 
-```
-AI:  Here's the solution using `requests`...
-You: We use httpx.
-AI:  Here's the updated solution with classes...
-You: We prefer functions.
-AI:  Here's the refactored version...
-You: We use ruff, not black.
-AI:  *rewrites everything again*
-```
+In January 2026, security researchers found **341 malicious skills (12% of the registry)** on ClawHub:
 
-**You've done this dance before.** Every session. Every project. Every time.
+> "Skills can exfiltrate data, poison memory, and persist backdoors... The payload delivery mechanism was deceptively simple: a 'Prerequisites' section instructing users to install additional components."
+>
+> — [Snyk Security Research](https://snyk.io/articles/skill-md-shell-access/)
 
-AI agents are powerful. But they're flying blind:
+What got stolen:
 
-- They don't know you prefer `X | None` over `Optional[X]`
-- They don't know your API has a layered architecture
-- They don't know that `users.py` has a quirk that breaks everything
-- They don't know *anything* until you tell them. Again.
+- API keys and wallet credentials
+- SSH keys and browser passwords
+- Agent memory files (enabling persistent behavioral changes)
+
+**External skills = external attack surface.** Don't load them.
 
 ---
 
-## The Fix
+## Issue 2: Context Rot
 
-```
-your-project/
-├── AGENTS.md     # How you write code
-└── SKILL.md      # What this project is
-```
+Pre-loaded context becomes stale. Models get smarter.
 
-That's it. Two markdown files.
+A February 2026 study evaluated AGENTS.md files across multiple coding agents:
 
-| File | What It Does | Shared? |
-|------|--------------|---------|
-| **AGENTS.md** | Your development conventions | Yes — symlink across all projects |
-| **SKILL.md** | This repo's domain knowledge | No — unique per project |
+> "Context files are redundant documentation... LLM-generated context files have a marginal negative effect on task success rates."
+>
+> — [arXiv:2602.11988](https://arxiv.org/abs/2602.11988)
 
-Agents read these files. They *get it*. First try.
+The research found:
 
----
+| Finding | Evidence |
+|---------|----------|
+| Context files are redundant | 100% of generated files duplicate existing docs |
+| Repository overviews don't help | No meaningful reduction in steps to find relevant files |
+| Instructions get followed but hurt | More testing, more exploration, same or worse outcomes |
 
-## Quick Start
+Your 300-line AGENTS.md contains opinions that:
 
-=== "Scaffold CLI"
-
-    ```bash
-    # Clone and build
-    git clone https://github.com/Proteusiq/agentic.git
-    cd agentic/scaffold && cargo build --release
-    
-    # Install
-    cp target/release/scaffold /usr/local/bin/
-    
-    # Use
-    scaffold -d ~/code/my-project --link
-    ```
-
-=== "Manual"
-
-    ```bash
-    curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
-    curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/SKILL.template.md
-    mv SKILL.template.md SKILL.md
-    ```
-
-=== "Just Copy"
-
-    Grab [AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md) and [SKILL.template.md](https://github.com/Proteusiq/agentic/blob/main/SKILL.template.md) from the repo.
+1. The model already knows (Python style, TypeScript rules)
+2. Conflict with what the codebase actually does
+3. Become outdated as the project evolves
 
 ---
 
-## How It Works
+## Issue 3: Complexity for No Gain
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        AGENTS.md                            │
-│                                                             │
-│  "Use httpx, not requests"                                  │
-│  "Run ruff before commit"                                   │
-│  "Functional over OOP"                                      │
-│                                                             │
-│  ↓ symlinked to every project                               │
-├─────────────────────────────────────────────────────────────┤
-│                        SKILL.md                             │
-│                                                             │
-│  "This is a payment API"                                    │
-│  "Prices in cents, displayed in dollars"                    │
-│  "Never delete subscriptions, cancel them"                  │
-│                                                             │
-│  ↓ unique per project                                       │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-                    AI reads both files
-                              ↓
-                 Writes code YOUR way, first try
-```
+More context = worse results + higher cost.
 
-Update conventions once → every project gets them.  
-Keep domain knowledge focused → agents load fast.
+From the same study:
+
+> "Context files tend to **reduce task success rates** compared to providing no repository context, while also **increasing inference cost by over 20%**."
+
+The numbers:
+
+| Metric | With Context Files | Without |
+|--------|-------------------|---------|
+| Task success | Lower | **Higher** |
+| Inference cost | +20-23% | Baseline |
+| Steps to complete | More | **Fewer** |
+| Reasoning tokens | +14-22% more | Baseline |
+
+The agent spends tokens reading your rules, following your instructions, running extra tests you demanded — and solves fewer problems.
 
 ---
 
-## Works With
+## The Fix: RTFM
 
-Skills follow the [Agent Skills](https://agentskills.io) open standard.
+Read The Fucking Manual. In real-time.
 
-| Agent | How to Enable |
-|-------|---------------|
-| **Claude Code** | Reads `AGENTS.md` and `SKILL.md` automatically |
-| **OpenCode** | Symlink to `~/.config/opencode/skills/` |
-| **Cursor** | Reads `.cursorrules` — rename or copy |
-| **Any LLM** | Paste the file contents or use as system prompt |
+```markdown
+# Development Conventions
+
+You are an expert software engineer. You write clean, maintainable code. You think before you code.
 
 ---
 
-## Dive In
+## How to Work
 
-| Page | What You'll Learn |
-|------|-------------------|
-| [Philosophy](philosophy.md) | Why two files? Why these conventions? The thinking behind Agentic. |
-| [Writing AGENTS.md](agents-md.md) | How to write conventions that AI agents actually follow. |
-| [Writing SKILL.md](skill-md.md) | Capture your project's DNA so agents understand it instantly. |
-| [Scaffold CLI](scaffold.md) | The Rust CLI that sets up both files in seconds. |
-| [Examples](examples.md) | Real-world SKILL.md files from production projects. |
+1. **Research first** — read official docs, explore the codebase, understand before changing
+2. **Document findings** — update `learnings.md` with what you discover (gotchas, working commands, patterns)
+3. **Track future work** — push non-blocking items to `todo.md`
+
+That's it. No external skills, no pre-loaded context. Research in real-time, document as you go.
+
+---
+
+## NEVER (Destructive Actions)
+
+These actions require **explicit user confirmation**. Stop and ask before proceeding.
+
+- NEVER run destructive database commands (`DROP`, `DELETE`, `TRUNCATE`) on production
+- NEVER commit secrets, API keys, tokens, or credentials to git
+- NEVER force push to `main` or `master`
+- NEVER run `rm -rf` on directories you didn't create in this session
+- NEVER deploy to production without explicit approval
+
+If an action could cause data loss, expose secrets, or affect production: **stop, explain, ask**.
+```
+
+**27 lines.** Workflow + guardrails. Nothing else.
+
+---
+
+## Why This Works
+
+| Old School | Markdown Hell |
+|------------|---------------|
+| Agent reads current docs | Agent reads your stale summary |
+| Agent explores the codebase | Agent follows your outdated overview |
+| Agent forms conclusions | Agent inherits your assumptions |
+| Agent adapts to changes | Agent conflicts with reality |
+| No attack surface | External skills = vulnerabilities |
+| Lower cost | +20% inference overhead |
+
+The agent is capable. Let it research. Let it learn. Document what it discovers.
+
+---
+
+## Get the File
+
+[AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md) — 27 lines.
+
+Copy to project root. Done.

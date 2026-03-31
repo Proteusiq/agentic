@@ -1,31 +1,17 @@
 [project]
 name = "agentic"
-version = "0.1.0"
-description = "Two files. Infinite context. Zero repetition."
+version = "0.2.0"
+description = "Stop the markdown hell. One file is all you need."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 authors = [{ name = "Prayson Wilfred Daniel", email = "14926709+Proteusiq@users.noreply.github.com" }]
-keywords = ["ai", "agents", "llm", "conventions", "documentation"]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Topic :: Software Development :: Documentation",
-]
+keywords = ["ai", "agents", "llm"]
 dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/Proteusiq/agentic"
-Documentation = "https://proteusiq.github.io/agentic"
 Repository = "https://github.com/Proteusiq/agentic"
-Issues = "https://github.com/Proteusiq/agentic/issues"
 
 [dependency-groups]
-docs = [
-    "zensical>=0.0.24",
-]
+docs = ["mkdocs-material>=9.0"]

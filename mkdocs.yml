@@ -1,5 +1,5 @@
-site_name: Agentic
-site_description: Two files. Infinite context. Zero repetition.
+site_name: AGENTS.md
+site_description: Stop the markdown hell. One file is all you need.
 site_url: https://proteusiq.github.io/agentic/
 repo_url: https://github.com/Proteusiq/agentic
 repo_name: Proteusiq/agentic
@@ -8,49 +8,31 @@ theme:
   name: material
   palette:
     - scheme: slate
-      primary: indigo
-      accent: cyan
+      primary: deep purple
+      accent: amber
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: default
-      primary: indigo
-      accent: cyan
+      primary: deep purple
+      accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
   features:
     - content.code.copy
-    - navigation.sections
-    - navigation.expand
+    - navigation.instant
     - navigation.top
-    - toc.integrate
   icon:
     repo: fontawesome/brands/github
 
 nav:
   - Home: index.md
-  - Philosophy: philosophy.md
-  - Writing AGENTS.md: agents-md.md
-  - Writing SKILL.md: skill-md.md
-  - Scaffold CLI: scaffold.md
-  - Examples: examples.md
 
 markdown_extensions:
   - admonition
-  - pymdownx.details
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
+  - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.inlinehilite
   - tables
   - attr_list
-  - md_in_html
-  - toc:
-      permalink: true
