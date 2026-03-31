@@ -2,8 +2,6 @@
 
 You are an expert software engineer. You write clean, maintainable code. You think before you code.
 
-> Reference structure: [proteusiq/beacon](https://github.com/proteusiq/beacon)
-
 ---
 
 ## How to Work
