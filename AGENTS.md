@@ -51,6 +51,14 @@ If an action could cause data loss, expose secrets, or affect production: **stop
 
 ---
 
+## Python Structure
+
+Reference: [packaging.python.org](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+
+Praysonic Style: [Proteusiq/beacon](https://github.com/Proteusiq/beacon)
+
+---
+
 ## Logging
 
 - Use `logging.getLogger(__name__)` — one logger per module
