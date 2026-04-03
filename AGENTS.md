@@ -92,7 +92,7 @@ Types: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`
 ## The Loop
 
 ```
-Change → Format → Lint → Type Check → Test → Commit
+Change → AGENTS.md rules followed → Format → Lint → Type Check → Test → Commit
 ```
 
 Run the full verification before every commit. No exceptions.
