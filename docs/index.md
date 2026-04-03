@@ -1,4 +1,4 @@
-# Stop the Markdown Hell
+# Let's Stop the Markdown Hell
 
 You don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
 
