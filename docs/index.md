@@ -77,7 +77,7 @@ The agent spends tokens reading your rules, following your instructions, running
 
 ## The Fix: RTFM
 
-Read The Fucking Manual. In real-time.
+Read The Ducking Manual. In real-time.
 
 ```markdown
 # Development Conventions
