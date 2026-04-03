@@ -1,6 +1,6 @@
-# Learnings
+# SKILL.md
 
-Discoveries from research. Updated as we go.
+Project-specific knowledge. Discovered through research, not pre-loaded.
 
 ---
 

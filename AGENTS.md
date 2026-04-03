@@ -5,7 +5,7 @@
 ## How to Work
 
 1. **Research first** — read official docs, explore the codebase, understand before changing
-2. **Document findings** — update `learnings.md` with what you discover (gotchas, working commands, patterns)
+2. **Document findings** — update `SKILL.md` with what you discover (gotchas, working commands, patterns)
 3. **Track future work** — push non-blocking items to `todo.md`
 
 That's it. No external skills, no pre-loaded context. Research in real-time, document as you go.
