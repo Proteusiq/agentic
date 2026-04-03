@@ -50,3 +50,23 @@ Discoveries from research. Updated as we go.
 **Source:** [proteusiq/beacon](https://github.com/proteusiq/beacon)
 
 Follow this repo's patterns for project structure.
+
+---
+
+## Before Release: Security Scan
+
+Before any release, take the role of a security red team:
+
+1. **Find** — scan for vulnerabilities, try to break it, exploit weaknesses
+2. **Patch** — fix what you find
+3. **Repeat** — find again, patch again, until secure
+
+Attack vectors to check:
+- Injection (SQL, command, template)
+- Authentication/authorization bypasses
+- Secrets exposure (logs, errors, responses)
+- Dependency vulnerabilities (`uv audit`, `npm audit`, `cargo audit`)
+- Input validation gaps
+- Privilege escalation paths
+
+**Conclusion:** Only release when you can't break it.
