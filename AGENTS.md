@@ -96,3 +96,23 @@ Change → AGENTS.md rules followed → Format → Lint → Type Check → Test 
 ```
 
 Run the full verification before every commit. No exceptions.
+
+---
+
+## Before Release: Security Scan
+
+Before any release, take the role of a security red team:
+
+1. **Find** — scan for vulnerabilities, try to break it, exploit weaknesses
+2. **Patch** — fix what you find
+3. **Repeat** — find again, patch again, until secure
+
+Attack vectors to check:
+- Injection (SQL, command, template)
+- Authentication/authorization bypasses
+- Secrets exposure (logs, errors, responses)
+- Dependency vulnerabilities (`uv audit`, `npm audit`, `cargo audit`)
+- Input validation gaps
+- Privilege escalation paths
+
+Only release when you can't break it.
