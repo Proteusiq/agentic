@@ -130,6 +130,6 @@ The agent is capable. Let it research. Let it learn. Document what it discovers.
 
 ## Get the File
 
-[AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md) — 27 lines.
+[AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md)
 
 Copy to project root. Done.
