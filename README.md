@@ -1,8 +1,8 @@
 # Let's Stop the Markdown Hell
 
-You don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
+Maybe you don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
 
-**You need one file: AGENTS.md** — and it should be minimal.
+**Maybe you need one file: AGENTS.md** — and it should be minimal.
 
 **Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
