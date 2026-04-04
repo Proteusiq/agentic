@@ -26,7 +26,7 @@ Context files [reduce task success rates and increase cost by 20%](https://arxiv
 
 ## The Fix: RTFM
 
-Read The Fucking Manual. In real-time.
+Read The Ducking Manual. In real-time.
 
 ```markdown
 # Development Conventions
