@@ -1,6 +1,14 @@
 # Research
 
-What the studies say about AGENTS.md and context files.
+This approach came from 4 months of pragmatic experimentation — not from papers. The research came later and validated what we were already doing.
+
+---
+
+## Practice First, Papers Second
+
+We started with a simple observation: bloated AGENTS.md files weren't helping. We stripped them down, let the LLM research, and documented what it found. It worked better.
+
+Then the papers came out.
 
 ---
 
@@ -82,7 +90,7 @@ Both papers agree: **minimal is better**.
 
 ## Our Approach
 
-Based on this research, we use:
+We arrived at this through practice. The research confirmed it:
 
 **AGENTS.md** — Minimal rules. Workflow + NEVER rules. Nothing the LLM already knows.
 
