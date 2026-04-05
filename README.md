@@ -55,6 +55,8 @@ Three files. Minimal rules. Let the LLM research.
 
 **todo.md** — Current tasks. Ephemeral. Summarized when complete.
 
+Still love your markdowns? See [examples](https://proteusiq.github.io/agentic/examples/) for what `learnings.md` looks like in practice.
+
 ---
 
 ## The Workflow
