@@ -1,64 +1,68 @@
-# Let's Stop the Markdown Hell
+# You Know Nothing, AGENTS.md
 
-Maybe you don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
+Your 500-line AGENTS.md full of "best practices"? The model already knows. You're paying 20% more tokens to tell Claude how to write Python.
 
-**Maybe you need one file: [AGENTS.md](https://agents.md/)** - Maybe classical **CONTRIBUTIONS.md** 🤷🏾‍♂️ and it should be minimal.
+**The model is not Jon Snow.** You are.
+
+---
+
+## The Problem
+
+You pre-load context that:
+
+1. **The model already knows** — Python conventions, TypeScript patterns, git workflows
+2. **Gets stale** — your "current" architecture doc is 6 months old
+3. **Conflicts with reality** — the codebase evolved, your rules didn't
+4. **Costs more** — [+20% inference overhead](https://arxiv.org/abs/2602.11988) for worse results
+
+Stop telling the model what it knows. Start telling it what it doesn't.
+
+---
+
+## The Fix
+
+Three files. That's it.
+
+| File | Purpose | Who writes |
+|------|---------|------------|
+| `AGENTS.md` | Rules + guardrails | You |
+| `learnings.md` | Discovered knowledge | The model |
+| `todo.md` | Working memory | The model |
+
+**AGENTS.md** — Minimal. Workflow + NEVER rules. Nothing the model already knows.
+
+**learnings.md** — Project-specific gotchas, working commands, patterns. Grows over time. This is the actual value.
+
+**todo.md** — Current tasks. Ephemeral. Rewritten when complete.
+
+---
+
+## The Workflow
+
+```
+Research → Discover → Document → Build → Verify → Commit
+    │          │          │
+    │          │          └──▶ learnings.md (persists)
+    │          │
+    │          └──▶ Query DB, test APIs, explore codebase
+    │
+    └──▶ Read official docs, not your stale summary
+```
+
+The model researches in real-time. Documents what it finds. You keep the knowledge.
 
 **Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
 ---
 
-## The Problems
+## Get Started
 
-### 1. Security
-
-Skills are attack vectors. 12% of ClawHub's registry was [compromised with malware](https://snyk.io/articles/skill-md-shell-access/).
-
-### 2. Context Rot
-
-Pre-loaded context becomes stale. Models already know Python style and TypeScript rules. Your 300-line file conflicts with reality.
-
-### 3. Complexity for No Gain
-
-Context files [reduce task success rates and increase cost by 20%](https://arxiv.org/abs/2602.11988). More context = worse results.
-
----
-
-## The Fix: RTFM
-
-Read The Ducking Manual. In real-time.
-
-```markdown
-# Development Conventions
-
-You are an expert software engineer. You write clean, maintainable code. You think before you code.
-
----
-
-## How to Work
-
-1. **Research first** — read official docs, explore the codebase, understand before changing
-2. **Document findings** — update `learnings.md` with what you discover (gotchas, working commands, patterns)
-3. **Track future work** — push non-blocking items to `todo.md`
-
-That's it. No external skills, no pre-loaded context. Research in real-time, document as you go.
-
----
-
-## NEVER (Destructive Actions)
-
-These actions require **explicit user confirmation**. Stop and ask before proceeding.
-
-- NEVER run destructive database commands (`DROP`, `DELETE`, `TRUNCATE`) on production
-- NEVER commit secrets, API keys, tokens, or credentials to git
-- NEVER force push to `main` or `master`
-- NEVER run `rm -rf` on directories you didn't create in this session
-- NEVER deploy to production without explicit approval
-
-If an action could cause data loss, expose secrets, or affect production: **stop, explain, ask**.
+```bash
+curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
+touch learnings.md todo.md
 ```
 
-Copy [AGENTS.md](./AGENTS.md) to your project. Done.
+See [agents.md](https://agents.md/) for the spec.
 
 ---
 
