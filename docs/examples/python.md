@@ -2,6 +2,10 @@
 
 Example `learnings.md` for a Python project.
 
+> **Inspiration**: Use these files with your agentic tool:
+> - [AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md) — rules and workflow
+> - [learnings.md](https://github.com/Proteusiq/agentic/blob/main/docs/examples/python.md) — this example
+
 ---
 
 ## Task Approach
