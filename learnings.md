@@ -1,4 +1,4 @@
-# SKILL.md
+# Learnings
 
 Project-specific knowledge. Discovered through research, not pre-loaded.
 
@@ -70,3 +70,14 @@ Attack vectors to check:
 - Privilege escalation paths
 
 **Conclusion:** Only release when you can't break it.
+
+---
+
+## Quick Reference
+
+| Lang | Format | Lint | Type Check | Test |
+|------|--------|------|------------|------|
+| Python | `ruff format .` | `ruff check --fix .` | `ty check .` | `pytest` |
+| Rust | `cargo fmt` | `cargo clippy` | (built-in) | `cargo test` |
+| TS (Bun) | `biome format --write .` | `biome check --fix .` | `tsc --noEmit` | `bun test` |
+| TS (Deno) | `deno fmt` | `deno lint` | `deno check .` | `deno test` |

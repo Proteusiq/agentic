@@ -5,7 +5,7 @@
 ## How to Work
 
 1. **Research first** — read official docs, explore the codebase, understand before changing
-2. **Document findings** — update `SKILL.md` with what you discover (gotchas, working commands, patterns)
+2. **Document findings** — update `learnings.md` with what you discover (gotchas, working commands, patterns)
 3. **Track future work** — push non-blocking items to `todo.md`
 
 That's it. No external skills, no pre-loaded context. Research in real-time, document as you go.
@@ -51,31 +51,12 @@ If an action could cause data loss, expose secrets, or affect production: **stop
 
 ---
 
-## Python Structure
-
-Reference: [packaging.python.org](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
-
-Praysonic Style: [Proteusiq/beacon](https://github.com/Proteusiq/beacon)
-
----
-
 ## Logging
 
 - Use `logging.getLogger(__name__)` — one logger per module
 - Levels: `DEBUG` (diagnostics), `INFO` (working), `WARNING` (unexpected), `ERROR` (failure)
 - Log liberally in long functions, try/except blocks, and external calls
 - Never log secrets, tokens, or PII
-
----
-
-## Quick Reference
-
-| Lang | Format | Lint | Type Check | Test |
-|------|--------|------|------------|------|
-| Python | `ruff format .` | `ruff check --fix .` | `ty check .` | `pytest` |
-| Rust | `cargo fmt` | `cargo clippy` | (built-in) | `cargo test` |
-| TS (Bun) | `biome format --write .` | `biome check --fix .` | `tsc --noEmit` | `bun test` |
-| TS (Deno) | `deno fmt` | `deno lint` | `deno check .` | `deno test` |
 
 ---
 
