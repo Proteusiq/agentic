@@ -50,18 +50,16 @@ Remember when we wrote "use `black` and `mypy`"? The Python community moved to `
 > - "Type check with `mypy`" → `ty` is 10-100x faster
 > - "Use `requests`" → `httpx` supports async
 
-### 3. It's Already Baked In (Or Easily Discovered)
+### 3. Agentic Workflows Can Discover
 
-Modern LLMs already know:
-- Language conventions (Python, TypeScript, Rust, Go)
-- Framework patterns (FastAPI, React, Django)
-- Git workflows and commit conventions
-- Testing best practices
-- Error handling patterns
+The LLM doesn't need to know everything upfront. With agentic workflows, it can:
+- Read official documentation (current, not our stale copy)
+- Explore the actual codebase
+- Query databases and APIs
+- Test endpoints and verify behavior
+- Document what it finds in `learnings.md`
 
-What they don't know, they can research. Read the current docs. Check the actual source. Document what they find.
-
-We don't need to teach this. We need to tell the LLM what's *specific to our project*.
+We don't need to pre-load this. We need to tell the LLM what's *specific to our project* and let it research the rest.
 
 ### 4. Context Rot
 
