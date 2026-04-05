@@ -113,23 +113,42 @@ If an action could cause data loss, expose secrets, or affect production: **stop
 
 ---
 
+## The Three Files
+
+| File | Purpose | Who writes it |
+|------|---------|---------------|
+| `AGENTS.md` | Rules and workflow | Human |
+| `learnings.md` | Discovered knowledge, gotchas, working commands | LLM (during work) |
+| `todo.md` | Current tasks in progress | LLM (working memory) |
+
+**AGENTS.md** is prescriptive — what to do and what not to do.
+
+**learnings.md** is descriptive — what the LLM discovered while working. Patterns, gotchas, commands that work. This grows over time.
+
+**todo.md** is ephemeral — tracks current work. Rewritten/summarized when tasks complete to stay minimal.
+
+---
+
 ## Why This Works
 
-| Old School | Markdown Hell |
-|------------|---------------|
+| This Approach | Markdown Hell |
+|---------------|---------------|
 | Agent reads current docs | Agent reads your stale summary |
 | Agent explores the codebase | Agent follows your outdated overview |
 | Agent forms conclusions | Agent inherits your assumptions |
 | Agent adapts to changes | Agent conflicts with reality |
+| Agent documents findings | Knowledge lost each session |
 | No attack surface | External skills = vulnerabilities |
 | Lower cost | +20% inference overhead |
 
-The agent is capable. Let it research. Let it learn. Document what it discovers.
+The agent is capable. Let it research. Let it learn. Let it document what it discovers.
 
 ---
 
-## Get the File
+## Get Started
 
-[AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md)
+1. Copy [AGENTS.md](https://github.com/Proteusiq/agentic/blob/main/AGENTS.md) to your project root
+2. Create empty `learnings.md` and `todo.md`
+3. Done
 
-Copy to project root. Done.
+See [agents.md](https://agents.md/) for the spec.
