@@ -6,7 +6,7 @@
 > *"You know nothing, Jon Snow."*
 > — Ygritte, Game of Thrones
 
-Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're paying 20% more tokens to tell it how to write Python.
+Our bloated AGENTS.md full of generic "best practices"? The LLM already knows. We're paying extra tokens to tell it how to write Python.
 
 **The LLM is not Jon Snow.** We are.
 
@@ -63,7 +63,7 @@ We don't need to pre-load generic knowledge. We need to elicit context *specific
 
 ### 4. Context Rot
 
-Pre-loaded context is more than we bargained for. A Polars SKILL.md with everything about the library when we only need 3% of it. A 500-line AGENTS.md when 50 lines would do.
+Pre-loaded context is more than we bargained for. A Polars SKILL.md with everything about the library when we only need 3% of it. Multiple overlapping files saying the same thing.
 
 Irrelevant context:
 - Wastes tokens
