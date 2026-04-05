@@ -127,8 +127,6 @@ touch learnings.md todo.md
 
 ---
 
----
-
 ## In Good Company?
 
 Even the best fall into AI markdown hell:

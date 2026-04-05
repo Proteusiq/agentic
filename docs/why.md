@@ -1,45 +1,57 @@
 # Why Minimal?
 
-The case against bloated context files and external skills.
+The case against bloated context files.
 
 ---
 
-## Context Files Hurt Performance
+## LLM Capabilities Keep Increasing
 
-Research suggests that pre-loaded context files may actually reduce task success rates while increasing costs.
+What we wrote 6 months ago? The model already knows it better now.
 
-**The pattern we see:**
-
-| What happens | Why it hurts |
-|--------------|--------------|
-| Context duplicates what LLM knows | Wasted tokens, no benefit |
-| Context gets stale | Conflicts with actual codebase |
-| LLM follows our outdated rules | Extra work, worse outcomes |
-| More tokens consumed | +20% inference cost |
-
-**The alternative:** Let the LLM research in real-time. It reads current docs, explores the actual codebase, forms conclusions based on reality.
+Our "best practices" doc is teaching the teacher.
 
 ---
 
-## External Skills Are Attack Vectors
+## Tooling Evolves Faster Than Our Docs
 
-Skills and plugins from external registries are a security risk.
+Remember when we wrote "use `black` and `mypy`"? The Python community moved to `uv`, `ruff`, and `ty`.
 
-**The attack pattern:**
+Examples of outdated advice in the wild:
+- "Use `pip install`" → `uv` is faster and better
+- "Format with `black`" → `ruff format` does it faster
+- "Type check with `mypy`" → `ty` is 10-100x faster
+- "Use `requests`" → `httpx` supports async
 
-1. Malicious skill gets uploaded to a registry
-2. Skill contains "Prerequisites" or "Setup" instructions
-3. Instructions tell LLM to run install commands
-4. Commands exfiltrate secrets, install backdoors, or poison memory
+Our AGENTS.md is now actively wrong.
 
-**What gets stolen:**
+---
 
-- API keys and credentials
-- SSH keys and tokens
-- Browser passwords
-- Agent memory files (enabling persistent behavioral changes)
+## Agentic Workflows Can Discover
 
-**The fix:** Don't load external skills. No attack surface. If we need functionality, we build it ourselves or use vetted dependencies.
+The LLM doesn't need to know everything upfront. With agentic workflows, it can:
+- Read official documentation (current, not our stale copy)
+- Explore the actual codebase
+- Query databases and APIs
+- Test endpoints and verify behavior
+- Document what it finds in `learnings.md`
+
+We don't need to pre-load generic knowledge. We need to elicit context *specific to our project* and let the LLM research the rest.
+
+---
+
+## Context Rot
+
+Pre-loaded context is more than we bargained for.
+
+A Polars SKILL.md with everything about the library when we only need 3% of it. Multiple files contributing less value than the tokens they cost.
+
+Irrelevant context:
+- Wastes tokens
+- Distracts from the actual task
+- Conflicts with project-specific needs
+- Gets outdated while sitting in our repo
+
+Tailor it to what we actually need. Let the LLM research the rest.
 
 ---
 
@@ -66,11 +78,11 @@ Instead of one bloated file, use three focused ones:
 
 **learnings.md** — Knowledge the LLM discovers. Grows over time. Project-specific gotchas, working commands, patterns.
 
-**todo.md** — Working memory. Current tasks. Ephemeral. Rewritten when complete.
+**todo.md** — Working memory. Current tasks. Ephemeral. Summarized when complete.
 
 This separates:
 - What we prescribe (rules)
-- What gets discovered (learnings)  
+- What gets discovered (learnings)
 - What's in progress (todos)
 
 ---
@@ -78,4 +90,3 @@ This separates:
 ## References
 
 - [agents.md spec](https://agents.md/) — The AGENTS.md specification
-- [arXiv:2602.11988](https://arxiv.org/abs/2602.11988) — Research on context file effectiveness
