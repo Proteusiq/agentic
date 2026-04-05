@@ -36,6 +36,7 @@ nav:
   - Home: index.md
   - Why: why.md
   - Workflow: workflow.md
+  - Skills vs Learnings: skills-vs-learnings.md
   - Examples:
     - examples/index.md
     - Python: examples/python.md
