@@ -1,8 +1,8 @@
 # You Know Nothing, AGENTS.md
 
-Your 500-line AGENTS.md full of "best practices"? The model already knows. You're paying 20% more tokens to tell Claude how to write Python.
+Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're paying 20% more tokens to tell it how to write Python.
 
-**The model is not Jon Snow.** You are.
+**The LLM is not Jon Snow.** We are.
 
 ---
 
