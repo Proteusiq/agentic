@@ -14,6 +14,23 @@ Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're pa
 
 ## Issues with Markdown Hell
 
+You know the pattern:
+
+```
+AGENTS.md
+CLAUDE.md
+CURSOR.md
+CONVENTIONS.md
+ARCHITECTURE.md
+CONTRIBUTING.md
+SKILL.md
+.cursorrules
+.github/copilot-instructions.md
+...
+```
+
+Every tool wants its own file. We copy "best practices" into each one. They all say the same thing. They all get stale. **That's markdown hell.**
+
 ### 1. LLM Capabilities Keep Increasing
 
 What we wrote 6 months ago? The model already knows it better now. Our "best practices" doc is teaching the teacher.
