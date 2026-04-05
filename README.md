@@ -127,6 +127,22 @@ touch learnings.md todo.md
 
 ---
 
+---
+
+## In Good Company?
+
+Even the best fall into markdown hell:
+
+| Project | Developer | Markdown Files |
+|---------|-----------|----------------|
+| [Ghostty](https://github.com/ghostty-org/ghostty) | Mitchell Hashimoto | `.agents/`, `AGENTS.md`, `AI_POLICY.md`, `CONTRIBUTING.md`, `HACKING.md`, `PACKAGING.md` |
+| [Agent Framework](https://github.com/microsoft/agent-framework) | Microsoft | `CODE_OF_CONDUCT.md`, `COMMUNITY.md`, `CONTRIBUTING.md`, `SECURITY.md`, `SUPPORT.md`, `TRANSPARENCY_FAQ.md` |
+| [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | `README.md`, `CHANGELOG.md`, `LICENSE.md`, `SECURITY.md` ✨ |
+
+Anthropic keeps it clean. Be like Anthropic.
+
+---
+
 ## License
 
 MIT — Prayson Wilfred Daniel
