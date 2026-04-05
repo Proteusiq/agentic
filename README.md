@@ -33,7 +33,7 @@ pokemon.md
 ...
 ```
 
-Every tool wants its own file. We copy "best practices" into each one. They all say the same thing. They all get stale. **That's markdown hell.**
+Every tool wants its own file. We copy "best practices" into each one. They all get stale. **That's markdown hell.**
 
 ### 1. LLM Capabilities Keep Increasing
 
