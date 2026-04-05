@@ -1,18 +1,6 @@
-# Examples
+# Python learnings.md
 
-What `learnings.md` looks like in practice.
-
----
-
-## Python Project
-
-A real `learnings.md` after working on a Python project:
-
-```markdown
-# Learnings
-
-LLM knowledge base. Document findings here: gotchas, working commands, patterns, API quirks.
-Persists across sessions. Summarize when knowledge becomes outdated or redundant.
+Example `learnings.md` for a Python project.
 
 ---
 
@@ -82,6 +70,7 @@ Functional Core, Imperative Shell:
 ```
 
 Layout:
+
 ```
 src/
   core/       # Pure business logic (no I/O)
@@ -94,13 +83,14 @@ tests/
 ```
 
 Why this works:
+
 - Core logic is **pure** → easy to test, no mocks needed
 - Side effects are **isolated** → easy to swap implementations
 - Interfaces are **thin** → easy to add new entry points
 
 ---
 
-## Python Tools
+## Tools
 
 | Tool | Purpose | Install |
 |------|---------|---------|
@@ -111,7 +101,7 @@ Why this works:
 
 ---
 
-## Python Workflow
+## Workflow
 
 ```bash
 uv init myproject && cd myproject
@@ -127,6 +117,7 @@ uvx ty check .
 ```
 
 Before commit:
+
 ```bash
 uv run ruff format .
 uv run ruff check --fix .
@@ -136,7 +127,7 @@ uv run pytest
 
 ---
 
-## Python Style
+## Style
 
 ```python
 async def fetch_users(user_ids: list[int]) -> list[User]:
@@ -153,7 +144,7 @@ async def fetch_users(user_ids: list[int]) -> list[User]:
 
 ---
 
-## Python Checklist
+## Checklist
 
 - [ ] **Tools**: Using `uv`, `ruff`, `ty`, `pytest`
 - [ ] **Types**: All functions have type annotations
@@ -164,17 +155,3 @@ async def fetch_users(user_ids: list[int]) -> list[User]:
 - [ ] **Errors**: Returning structured errors, not exceptions for control flow
 - [ ] **Imports**: Absolute imports, no circular dependencies
 - [ ] **Config**: Environment variables, not hardcoded values
-```
-
----
-
-## Key Takeaways
-
-This `learnings.md` contains:
-
-1. **Principles** — Task approach, code design, error handling
-2. **Project-specific patterns** — Structure, layout, architecture
-3. **Tool knowledge** — Commands that work, workflows
-4. **Checklists** — Quick verification before commit
-
-The LLM builds this over time. Each session adds discoveries. Knowledge persists.
