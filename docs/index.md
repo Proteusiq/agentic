@@ -1,8 +1,8 @@
 # Let's Stop the Markdown Hell
 
-You don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or dozens of AI instruction files.
+We don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or dozens of AI instruction files.
 
-**You need one file: [AGENTS.md](https://agents.md/)** — and it should be minimal.
+**We need one file: [AGENTS.md](https://agents.md/)** — and it should be minimal.
 
 ---
 
@@ -63,7 +63,7 @@ Three files. That's it.
 
 | File | Purpose | Who writes it |
 |------|---------|---------------|
-| `AGENTS.md` | Rules and workflow | Human |
+| `AGENTS.md` | Rules and workflow | Us |
 | `learnings.md` | Discovered knowledge | LLM (during work) |
 | `todo.md` | Current tasks in progress | LLM (working memory) |
 
@@ -79,9 +79,9 @@ Three files. That's it.
 
 | This Approach | Markdown Hell |
 |---------------|---------------|
-| Agent reads current docs | Agent reads your stale summary |
-| Agent explores the codebase | Agent follows your outdated overview |
-| Agent forms conclusions | Agent inherits your assumptions |
+| Agent reads current docs | Agent reads our stale summary |
+| Agent explores the codebase | Agent follows our outdated overview |
+| Agent forms conclusions | Agent inherits our assumptions |
 | Agent adapts to changes | Agent conflicts with reality |
 | Agent documents findings | Knowledge lost each session |
 

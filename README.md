@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Agentic Coding is Coming" width="100%">
+  <strong>MINIMAL RULES</strong> · <strong>LLM DISCOVERS</strong> · <strong>KNOWLEDGE PERSISTS</strong>
+  <br><br>
+  <em>Stop teaching the teacher. Let it research.</em>
 </p>
 
 # You Know Nothing, AGENTS.md
