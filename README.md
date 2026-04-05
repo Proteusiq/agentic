@@ -8,14 +8,14 @@ Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're pa
 
 ## The Problem
 
-You pre-load context that:
+We pre-load context that:
 
-1. **The model already knows** — Python conventions, TypeScript patterns, git workflows
-2. **Gets stale** — your "current" architecture doc is 6 months old
-3. **Conflicts with reality** — the codebase evolved, your rules didn't
+1. **The LLM already knows** — Python conventions, TypeScript patterns, git workflows
+2. **Gets stale** — our "current" architecture doc is 6 months old
+3. **Conflicts with reality** — the codebase evolved, our rules didn't
 4. **Costs more** — [+20% inference overhead](https://arxiv.org/abs/2602.11988) for worse results
 
-Stop telling the model what it knows. Start telling it what it doesn't.
+Stop telling the LLM what it knows. Start telling it what it doesn't.
 
 ---
 
@@ -25,11 +25,11 @@ Three files. That's it.
 
 | File | Purpose | Who writes |
 |------|---------|------------|
-| `AGENTS.md` | Rules + guardrails | You |
-| `learnings.md` | Discovered knowledge | The model |
-| `todo.md` | Working memory | The model |
+| `AGENTS.md` | Rules + guardrails | Us |
+| `learnings.md` | Discovered knowledge | The LLM |
+| `todo.md` | Working memory | The LLM |
 
-**AGENTS.md** — Minimal. Workflow + NEVER rules. Nothing the model already knows.
+**AGENTS.md** — Minimal. Workflow + NEVER rules. Nothing the LLM already knows.
 
 **learnings.md** — Project-specific gotchas, working commands, patterns. Grows over time. This is the actual value.
 
@@ -46,10 +46,10 @@ Research → Discover → Document → Build → Verify → Commit
     │          │
     │          └──▶ Query DB, test APIs, explore codebase
     │
-    └──▶ Read official docs, not your stale summary
+    └──▶ Read official docs, not our stale summary
 ```
 
-The model researches in real-time. Documents what it finds. You keep the knowledge.
+The LLM researches in real-time. Documents what it finds. We keep the knowledge.
 
 **Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
