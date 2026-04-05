@@ -26,6 +26,10 @@ CONTRIBUTING.md
 SKILL.md
 .cursorrules
 .github/copilot-instructions.md
+code-reviewer.md
+testing.md
+api-conventions.md
+pokemon.md
 ...
 ```
 
