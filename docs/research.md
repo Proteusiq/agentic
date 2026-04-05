@@ -1,6 +1,8 @@
 # Research
 
-This approach came from 4 months of pragmatic experimentation — not from papers. The research came later and validated what we were already doing.
+We know nothing.
+
+This approach came from 4 months of pragmatic experimentation — not from papers. The research came later and validated what we were already doing. We're all learning.
 
 ---
 
@@ -8,7 +10,7 @@ This approach came from 4 months of pragmatic experimentation — not from paper
 
 We started with a simple observation: bloated AGENTS.md files weren't helping. We stripped them down, let the LLM research, and documented what it found. It worked better.
 
-Then the papers came out.
+Then the papers came out. They confirmed what practice taught us.
 
 ---
 
