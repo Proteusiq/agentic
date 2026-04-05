@@ -6,22 +6,42 @@ Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're pa
 
 ---
 
-## The Problem
+## Why Markdown Hell Fails
 
-We pre-load context that:
+### 1. LLM Capabilities Keep Increasing
 
-1. **The LLM already knows** — Python conventions, TypeScript patterns, git workflows
-2. **Gets stale** — our "current" architecture doc is 6 months old
-3. **Conflicts with reality** — the codebase evolved, our rules didn't
-4. **Costs more** — [+20% inference overhead](https://arxiv.org/abs/2602.11988) for worse results
+What we wrote 6 months ago? The model already knows it better now. Our "best practices" doc is teaching the teacher.
 
-Stop telling the LLM what it knows. Start telling it what it doesn't.
+### 2. Tooling Evolves Faster Than Our Docs
+
+Remember when we wrote "use `black` and `mypy`"? The Python community moved to `uv`, `ruff`, and `ty`. Our AGENTS.md is now actively wrong.
+
+Examples of outdated advice in the wild:
+- "Use `pip install`" → `uv` is faster and better
+- "Format with `black`" → `ruff format` does it faster
+- "Type check with `mypy`" → `ty` is 10-100x faster
+- "Use `requests`" → `httpx` supports async
+
+### 3. It's Already Baked In
+
+Modern LLMs know:
+- Language conventions (Python, TypeScript, Rust, Go)
+- Framework patterns (FastAPI, React, Django)
+- Git workflows and commit conventions
+- Testing best practices
+- Error handling patterns
+
+We don't need to teach this. We need to tell the LLM what's *specific to our project*.
+
+### 4. Research Confirms It
+
+Context files [reduce task success rates and increase cost by 20%](https://arxiv.org/abs/2602.11988). More context = worse results.
 
 ---
 
 ## The Fix
 
-Three files. That's it.
+Three files. Minimal rules. Let the LLM research.
 
 | File | Purpose | Who writes |
 |------|---------|------------|
@@ -29,11 +49,11 @@ Three files. That's it.
 | `learnings.md` | Discovered knowledge | The LLM |
 | `todo.md` | Working memory | The LLM |
 
-**AGENTS.md** — Minimal. Workflow + NEVER rules. Nothing the LLM already knows.
+**AGENTS.md** — Workflow + NEVER rules. Nothing the LLM already knows.
 
-**learnings.md** — Project-specific gotchas, working commands, patterns. Grows over time. This is the actual value.
+**learnings.md** — Project-specific gotchas, working commands, patterns. The LLM documents what it discovers. This persists. This is the actual value.
 
-**todo.md** — Current tasks. Ephemeral. Rewritten when complete.
+**todo.md** — Current tasks. Ephemeral. Summarized when complete.
 
 ---
 
@@ -46,10 +66,10 @@ Research → Discover → Document → Build → Verify → Commit
     │          │
     │          └──▶ Query DB, test APIs, explore codebase
     │
-    └──▶ Read official docs, not our stale summary
+    └──▶ Read official docs (current), not our summary (stale)
 ```
 
-The LLM researches in real-time. Documents what it finds. We keep the knowledge.
+The LLM researches in real-time. Reads current documentation. Documents what it finds. We keep the knowledge.
 
 **Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
