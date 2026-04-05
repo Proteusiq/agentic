@@ -14,6 +14,13 @@
     <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
     </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
   
   <!-- Background -->
@@ -32,19 +39,13 @@
   <circle cx="720" cy="25" r="1.5" fill="#e2e8f0" opacity="0.4"/>
   <circle cx="780" cy="50" r="2" fill="#e2e8f0" opacity="0.5"/>
   
-  <circle cx="30" cy="150" r="1.5" fill="#e2e8f0" opacity="0.4"/>
-  <circle cx="100" cy="170" r="2" fill="#e2e8f0" opacity="0.5"/>
-  <circle cx="180" cy="140" r="1" fill="#e2e8f0" opacity="0.3"/>
-  <circle cx="250" cy="180" r="2" fill="#e2e8f0" opacity="0.6"/>
-  <circle cx="330" cy="160" r="1.5" fill="#e2e8f0" opacity="0.4"/>
-  <circle cx="450" cy="175" r="2" fill="#e2e8f0" opacity="0.5"/>
-  <circle cx="550" cy="145" r="1" fill="#e2e8f0" opacity="0.3"/>
-  <circle cx="620" cy="185" r="2" fill="#e2e8f0" opacity="0.6"/>
-  <circle cx="700" cy="155" r="1.5" fill="#e2e8f0" opacity="0.4"/>
-  <circle cx="770" cy="175" r="2" fill="#e2e8f0" opacity="0.5"/>
+  <circle cx="30" cy="170" r="1.5" fill="#e2e8f0" opacity="0.4"/>
+  <circle cx="100" cy="185" r="2" fill="#e2e8f0" opacity="0.5"/>
+  <circle cx="700" cy="175" r="1.5" fill="#e2e8f0" opacity="0.4"/>
+  <circle cx="770" cy="185" r="2" fill="#e2e8f0" opacity="0.5"/>
   
-  <!-- Wolf silhouette - centered -->
-  <g transform="translate(280, 35)">
+  <!-- Wolf silhouette - left side -->
+  <g transform="translate(60, 30)">
     <!-- Wolf head profile -->
     <path d="M0,70 
              Q5,65 10,55 
@@ -75,16 +76,30 @@
     <path d="M25,70 Q30,72 40,70" stroke="#475569" stroke-width="0.5" fill="none"/>
   </g>
   
-  <!-- Breath cloud - multiple layers for depth -->
+  <!-- Breath cloud - flowing right -->
   <g filter="url(#blur)">
-    <ellipse cx="480" cy="100" rx="150" ry="30" fill="url(#breathGradient)" opacity="0.6"/>
-    <ellipse cx="520" cy="95" rx="130" ry="25" fill="url(#breathGradient)" opacity="0.5"/>
-    <ellipse cx="560" cy="105" rx="100" ry="20" fill="url(#breathGradient)" opacity="0.4"/>
-    <ellipse cx="600" cy="100" rx="70" ry="15" fill="url(#breathGradient)" opacity="0.3"/>
+    <ellipse cx="280" cy="95" rx="120" ry="25" fill="url(#breathGradient)" opacity="0.6"/>
+    <ellipse cx="320" cy="90" rx="100" ry="20" fill="url(#breathGradient)" opacity="0.5"/>
+    <ellipse cx="360" cy="98" rx="80" ry="16" fill="url(#breathGradient)" opacity="0.4"/>
   </g>
   
   <!-- Wispy breath details -->
-  <path d="M380,95 Q450,88 520,95 Q590,102 660,92" stroke="#cbd5e1" stroke-width="1.5" fill="none" opacity="0.3" filter="url(#blur)"/>
-  <path d="M390,108 Q460,100 530,110 Q600,118 680,105" stroke="#94a3b8" stroke-width="1" fill="none" opacity="0.2" filter="url(#blur)"/>
-  <path d="M400,100 Q480,95 560,102 Q640,108 720,98" stroke="#cbd5e1" stroke-width="1" fill="none" opacity="0.15" filter="url(#blur)"/>
+  <path d="M180,92 Q240,85 300,92 Q360,99 420,88" stroke="#cbd5e1" stroke-width="1.5" fill="none" opacity="0.3" filter="url(#blur)"/>
+  <path d="M190,102 Q250,95 310,104 Q370,112 430,100" stroke="#94a3b8" stroke-width="1" fill="none" opacity="0.2" filter="url(#blur)"/>
+  
+  <!-- Taglines - right side -->
+  <text x="600" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" letter-spacing="2" filter="url(#glow)">
+    MINIMAL RULES
+  </text>
+  <text x="600" y="95" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" letter-spacing="2" filter="url(#glow)">
+    LLM DISCOVERS
+  </text>
+  <text x="600" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" letter-spacing="2" filter="url(#glow)">
+    KNOWLEDGE PERSISTS
+  </text>
+  
+  <!-- Bottom tagline -->
+  <text x="600" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-style="italic" fill="#64748b">
+    Stop teaching the teacher. Let it research.
+  </text>
 </svg>
