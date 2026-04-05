@@ -63,7 +63,7 @@ We don't need to pre-load generic knowledge. We need to elicit context *specific
 
 ### 4. Context Rot
 
-Pre-loaded context is more than we bargained for. A Polars SKILL.md with everything about the library when we only need 3% of it. Multiple overlapping files saying the same thing.
+Pre-loaded context is more than we bargained for. A Polars SKILL.md with everything about the library when we only need 3% of it. Multiple files contributing less value than the tokens they cost.
 
 Irrelevant context:
 - Wastes tokens
