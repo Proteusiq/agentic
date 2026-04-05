@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Agentic Coding is Coming" width="100%">
+</p>
+
 # You Know Nothing, AGENTS.md
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
