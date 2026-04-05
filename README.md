@@ -50,14 +50,16 @@ Remember when we wrote "use `black` and `mypy`"? The Python community moved to `
 > - "Type check with `mypy`" → `ty` is 10-100x faster
 > - "Use `requests`" → `httpx` supports async
 
-### 3. It's Already Baked In
+### 3. It's Already Baked In (Or Easily Discovered)
 
-Modern LLMs know:
+Modern LLMs already know:
 - Language conventions (Python, TypeScript, Rust, Go)
 - Framework patterns (FastAPI, React, Django)
 - Git workflows and commit conventions
 - Testing best practices
 - Error handling patterns
+
+What they don't know, they can research. Read the current docs. Check the actual source. Document what they find.
 
 We don't need to teach this. We need to tell the LLM what's *specific to our project*.
 
