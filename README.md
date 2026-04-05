@@ -131,15 +131,16 @@ touch learnings.md todo.md
 
 ## In Good Company?
 
-Even the best fall into markdown hell:
+Even the best fall into AI markdown hell:
 
-| Project | Developer | Markdown Files |
-|---------|-----------|----------------|
-| [Ghostty](https://github.com/ghostty-org/ghostty) | Mitchell Hashimoto | `.agents/`, `AGENTS.md`, `AI_POLICY.md`, `CONTRIBUTING.md`, `HACKING.md`, `PACKAGING.md` |
-| [Agent Framework](https://github.com/microsoft/agent-framework) | Microsoft | `CODE_OF_CONDUCT.md`, `COMMUNITY.md`, `CONTRIBUTING.md`, `SECURITY.md`, `SUPPORT.md`, `TRANSPARENCY_FAQ.md` |
-| [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | `README.md`, `CHANGELOG.md`, `LICENSE.md`, `SECURITY.md` ✨ |
+| Project | Developer | AI Files |
+|---------|-----------|----------|
+| [Ghostty](https://github.com/ghostty-org/ghostty) | Mitchell Hashimoto | `AGENTS.md`, `AI_POLICY.md`, `.agents/commands/`, `.agents/skills/` |
+| [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | None ✨ |
 
-Anthropic keeps it clean. Be like Anthropic.
+Mitchell built an entire `.agents/` ecosystem with commands and skills directories. Anthropic ships Claude Code with zero AI instruction files.
+
+The irony? Claude Code works great without them.
 
 ---
 
