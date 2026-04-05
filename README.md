@@ -75,9 +75,9 @@ Tailor it to what we actually need. Let the LLM research the rest.
 
 ---
 
-## The Fix
+## The Fix: RTFM
 
-Three files. Minimal rules. Let the LLM research.
+Instead of markdown hell, go old school. Read The Ducking Manual. Update our learnings. Document our todos.
 
 | File | Purpose | Who writes |
 |------|---------|------------|
