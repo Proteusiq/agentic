@@ -129,4 +129,4 @@ touch learnings.md todo.md
 
 ## License
 
-MIT
+MIT — Prayson Wilfred Daniel
