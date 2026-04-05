@@ -4,35 +4,6 @@ Project-specific knowledge. Discovered through research, not pre-loaded.
 
 ---
 
-## AGENTS.md / Context Files
-
-**Source:** [arXiv:2602.11988](https://arxiv.org/abs/2602.11988) (Feb 2026)
-
-- Context files **reduce task success rates** vs no context
-- **+20% inference cost** with no benefit
-- LLM-generated context files perform worse than human-written
-- Human-written only marginally better than nothing
-- Context files are **redundant documentation** — 100% duplicate existing docs
-- Repository overviews in context files don't help agents find files faster
-- Agents follow instructions but the extra work hurts outcomes
-
-**Conclusion:** Minimal requirements only. No pre-loaded opinions.
-
----
-
-## Skills Security
-
-**Source:** [Snyk Research](https://snyk.io/articles/skill-md-shell-access/) (Jan 2026)
-
-- 12% of ClawHub skill registry compromised (341 malicious skills)
-- Attack vector: "Prerequisites" section with install instructions
-- Targets: API keys, SSH keys, browser passwords, agent memory files
-- Memory poisoning enables persistent behavioral changes
-
-**Conclusion:** Don't load external skills. No attack surface.
-
----
-
 ## Python Packaging
 
 **Source:** [packaging.python.org](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
