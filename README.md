@@ -138,7 +138,9 @@ Even the best fall into AI markdown hell:
 | [Ghostty](https://github.com/ghostty-org/ghostty) | Mitchell Hashimoto | `AGENTS.md`, `AI_POLICY.md`, `.agents/commands/`, `.agents/skills/` |
 | [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | `.claude/commands/`, `plugins/*/skills/`, 10+ `SKILL.md` files |
 
-Plot twist: Claude Code has an entire plugin ecosystem with skills, commands, and agents hidden in `plugins/`. 
+Plot twist: Claude Code has an entire plugin ecosystem with skills, commands, and agents hidden in `plugins/`. Each `SKILL.md` is thousands of words of domain-specific instructions.
+
+They proved the need for domain knowledge. We just think `learnings.md` does it simpler.
 
 Everyone's in markdown hell. The question is how deep.
 
