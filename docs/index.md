@@ -86,14 +86,3 @@ Three files. That's it.
 | Agent documents findings | Knowledge lost each session |
 
 The agent is capable. Let it research. Let it learn. Let it document what it discovers.
-
----
-
-## Get Started
-
-```bash
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
-touch learnings.md todo.md
-```
-
-See [agents.md](https://agents.md/) for the spec.
