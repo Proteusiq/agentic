@@ -1,5 +1,8 @@
 # You Know Nothing, AGENTS.md
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://proteusiq.github.io/agentic)
+
 Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're paying 20% more tokens to tell it how to write Python.
 
 **The LLM is not Jon Snow.** We are.
@@ -16,11 +19,12 @@ What we wrote 6 months ago? The model already knows it better now. Our "best pra
 
 Remember when we wrote "use `black` and `mypy`"? The Python community moved to `uv`, `ruff`, and `ty`. Our AGENTS.md is now actively wrong.
 
-Examples of outdated advice in the wild:
-- "Use `pip install`" → `uv` is faster and better
-- "Format with `black`" → `ruff format` does it faster
-- "Type check with `mypy`" → `ty` is 10-100x faster
-- "Use `requests`" → `httpx` supports async
+> [!WARNING]
+> Examples of outdated advice in the wild:
+> - "Use `pip install`" → `uv` is faster and better
+> - "Format with `black`" → `ruff format` does it faster
+> - "Type check with `mypy`" → `ty` is 10-100x faster
+> - "Use `requests`" → `httpx` supports async
 
 ### 3. It's Already Baked In
 
@@ -49,13 +53,15 @@ Three files. Minimal rules. Let the LLM research.
 | `learnings.md` | Discovered knowledge | The LLM |
 | `todo.md` | Working memory | The LLM |
 
-**AGENTS.md** — Workflow + NEVER rules. Nothing the LLM already knows.
+> [!NOTE]
+> **AGENTS.md** — Workflow + NEVER rules. Nothing the LLM already knows.
+>
+> **learnings.md** — Project-specific gotchas, working commands, patterns. The LLM documents what it discovers. This persists. This is the actual value.
+>
+> **todo.md** — Current tasks. Ephemeral. Summarized when complete.
 
-**learnings.md** — Project-specific gotchas, working commands, patterns. The LLM documents what it discovers. This persists. This is the actual value.
-
-**todo.md** — Current tasks. Ephemeral. Summarized when complete.
-
-Still love your markdowns? See [examples](https://proteusiq.github.io/agentic/examples/) for what `learnings.md` looks like in practice.
+> [!TIP]
+> Still love your markdowns? See [examples](https://proteusiq.github.io/agentic/examples/) for what `learnings.md` looks like in practice.
 
 ---
 
@@ -73,8 +79,6 @@ Research → Discover → Document → Build → Verify → Commit
 
 The LLM researches in real-time. Reads current documentation. Documents what it finds. We keep the knowledge.
 
-**Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
-
 ---
 
 ## Get Started
@@ -84,7 +88,10 @@ curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
 touch learnings.md todo.md
 ```
 
-See [agents.md](https://agents.md/) for the spec.
+> [!IMPORTANT]
+> See [agents.md](https://agents.md/) for the spec.
+
+**Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
 ---
 
