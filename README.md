@@ -136,11 +136,11 @@ Even the best fall into AI markdown hell:
 | Project | Developer | AI Files |
 |---------|-----------|----------|
 | [Ghostty](https://github.com/ghostty-org/ghostty) | Mitchell Hashimoto | `AGENTS.md`, `AI_POLICY.md`, `.agents/commands/`, `.agents/skills/` |
-| [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | None ✨ |
+| [Claude Code](https://github.com/anthropics/claude-code) | Anthropic | `.claude/commands/`, `plugins/*/skills/`, 10+ `SKILL.md` files |
 
-Mitchell built an entire `.agents/` ecosystem with commands and skills directories. Anthropic ships Claude Code with zero AI instruction files.
+Plot twist: Claude Code has an entire plugin ecosystem with skills, commands, and agents hidden in `plugins/`. 
 
-The irony? Claude Code works great without them.
+Everyone's in markdown hell. The question is how deep.
 
 ---
 
