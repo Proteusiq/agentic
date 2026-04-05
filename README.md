@@ -113,12 +113,17 @@ The LLM researches in real-time. Reads current documentation. Documents what it 
 
 ---
 
-## Get Started
+## Example: Python Project from Scratch
 
-```bash
-curl -O https://raw.githubusercontent.com/Proteusiq/agentic/main/AGENTS.md
-touch learnings.md todo.md
+Starting a new Python project? Point your agentic tool to these files:
+
 ```
+Use https://github.com/Proteusiq/agentic/blob/main/AGENTS.md as rules.
+Use https://github.com/Proteusiq/agentic/blob/main/docs/examples/python.md as initial learnings.
+Create todo.md for tracking tasks.
+```
+
+The LLM reads the rules, starts with Python-specific knowledge, and builds from there.
 
 > [!IMPORTANT]
 > See [agents.md](https://agents.md/) for the spec.
