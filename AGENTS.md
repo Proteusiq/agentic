@@ -31,6 +31,7 @@ That's it. No external skills, no pre-loaded context. Research in real-time, doc
 - Do NOT use `black` or `mypy`. Use `ruff` and `ty`.
 - Do NOT use `eslint` + `prettier`. Use `biome`.
 - Do NOT write inline comments. If code needs explaining, refactor.
+- Do NOT use magic numbers. Extract literals into named constants.
 - Do NOT use mutable default arguments in Python.
 - Do NOT use `.unwrap()` in production Rust. Handle the error.
 - Do NOT commit without running the verification loop.
