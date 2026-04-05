@@ -59,7 +59,7 @@ The LLM doesn't need to know everything upfront. With agentic workflows, it can:
 - Test endpoints and verify behavior
 - Document what it finds in `learnings.md`
 
-We don't need to pre-load this. We need to tell the LLM what's *specific to our project* and let it research the rest.
+We don't need to pre-load generic knowledge. We need to elicit context *specific to our project* and let the LLM research the rest.
 
 ### 4. Context Rot
 
