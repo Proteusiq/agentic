@@ -12,7 +12,7 @@ Our 500-line AGENTS.md full of "best practices"? The LLM already knows. We're pa
 
 ---
 
-## Why Markdown Hell Fails
+## Issues with Markdown Hell
 
 ### 1. LLM Capabilities Keep Increasing
 
