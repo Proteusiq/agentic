@@ -134,7 +134,19 @@ The LLM reads the rules, starts with Python-specific knowledge, and builds from 
 > [!IMPORTANT]
 > See [agents.md](https://agents.md/) for the spec.
 
-**Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
+---
+
+## Docs
+
+**[proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)**
+
+| Page | Description |
+|------|-------------|
+| [Why](https://proteusiq.github.io/agentic/why/) | Why minimal is better |
+| [Workflow](https://proteusiq.github.io/agentic/workflow/) | The research → discover → document loop |
+| [Research](https://proteusiq.github.io/agentic/research/) | What the arXiv papers say |
+| [Skills vs Learnings](https://proteusiq.github.io/agentic/skills-vs-learnings/) | Anthropic's approach vs ours |
+| [Examples](https://proteusiq.github.io/agentic/examples/) | Ready-to-use `learnings.md` templates |
 
 ---
 
