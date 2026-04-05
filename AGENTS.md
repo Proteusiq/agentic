@@ -18,6 +18,7 @@ That's it. No external skills, no pre-loaded context. Research in real-time, doc
 - **Self-documenting code** — if it needs comments, refactor it
 - **Functional over OOP** — pure functions, composition, immutability
 - **Verify before commit** — if it's not tested, it's not done
+- **Commit early, commit often** — small, focused, verified commits
 
 ---
 
