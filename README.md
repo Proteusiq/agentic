@@ -2,7 +2,7 @@
 
 Maybe you don't need SKILL.md, ARCHITECTURE.md, CONVENTIONS.md, .cursorrules, or external skills.
 
-**Maybe you need one file: AGENTS.md** - Maybe classical **CONTRIBUTIONS.md** 🤷🏾‍♂️ and it should be minimal.
+**Maybe you need one file: [AGENTS.md](https://agents.md/)** - Maybe classical **CONTRIBUTIONS.md** 🤷🏾‍♂️ and it should be minimal.
 
 **Docs:** [proteusiq.github.io/agentic](https://proteusiq.github.io/agentic)
 
