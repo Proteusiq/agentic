@@ -29,7 +29,6 @@ That's it. No external skills, no pre-loaded context. Research in real-time, doc
 - Do NOT use `requests`. Use `httpx`.
 - Do NOT use `black` or `mypy`. Use `ruff` and `ty`.
 - Do NOT use `eslint` + `prettier`. Use `biome`.
-- Do NOT swallow errors silently. Propagate with context.
 - Do NOT write inline comments. If code needs explaining, refactor.
 - Do NOT use mutable default arguments in Python.
 - Do NOT use `.unwrap()` in production Rust. Handle the error.
@@ -37,10 +36,10 @@ That's it. No external skills, no pre-loaded context. Research in real-time, doc
 
 ---
 
-## NEVER (Destructive Actions)
+## NEVER
 
-These actions require **explicit user confirmation**. Stop and ask before proceeding.
-
+- NEVER swallow errors or warnings. Fix them. No shortcuts.
+- NEVER treat errors as non-blocking. They block.
 - NEVER run destructive database commands (`DROP`, `DELETE`, `TRUNCATE`) on production
 - NEVER commit secrets, API keys, tokens, or credentials to git
 - NEVER force push to `main` or `master`
