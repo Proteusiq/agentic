@@ -53,7 +53,6 @@ If an action could cause data loss, expose secrets, or affect production: **stop
 
 ## Logging
 
-- Use `logging.getLogger(__name__)` — one logger per module
 - Levels: `DEBUG` (diagnostics), `INFO` (working), `WARNING` (unexpected), `ERROR` (failure)
 - Log liberally in long functions, try/except blocks, and external calls
 - Never log secrets, tokens, or PII
