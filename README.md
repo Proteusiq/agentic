@@ -63,9 +63,17 @@ What they don't know, they can research. Read the current docs. Check the actual
 
 We don't need to teach this. We need to tell the LLM what's *specific to our project*.
 
-### 4. Research Confirms It
+### 4. Context Rot
 
-Context files [reduce task success rates and increase cost by 20%](https://arxiv.org/abs/2602.11988). More context = worse results.
+Pre-loaded context is more than we bargained for. A Polars SKILL.md with everything about the library when we only need 3% of it. A 500-line AGENTS.md when 50 lines would do.
+
+Irrelevant context:
+- Wastes tokens
+- Distracts from the actual task
+- Conflicts with project-specific needs
+- Gets outdated while sitting in our repo
+
+Tailor it to what we actually need. Let the LLM research the rest.
 
 ---
 
