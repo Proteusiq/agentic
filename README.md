@@ -12,7 +12,7 @@
 > *"You know nothing, Jon Snow."*
 > — Ygritte, Game of Thrones
 
-Our bloated AGENTS.md full of generic "best practices"? The LLM already knows. We're paying extra tokens to tell it how to write Python.
+Our bloated AGENTS.md full of generic "best practices"? The LLM already knows. We're paying extra tokens to tell it how to write content already in training data sets.
 
 **The LLM is not Jon Snow.** We are.
 
