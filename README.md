@@ -1,7 +1,7 @@
 <p align="center">
   <strong>MINIMAL RULES</strong> · <strong>LLM DISCOVERS</strong> · <strong>KNOWLEDGE PERSISTS</strong>
   <br><br>
-  <em>Stop teaching the teacher. Let it research.</em>
+  <em>Are over complicating LLM elicitation? Should it not just research and update?</em>
 </p>
 
 # You Know Nothing, AGENTS.md
